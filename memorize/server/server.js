@@ -5,10 +5,7 @@ const { typeDefs, resolvers,  } = require('./schemas');
 // const routes = require('./routes');
 
 const { ApolloServer } = require('apollo-server-express')
-// import {typedef, resolver} = require
 const { authMiddleWare } = require('./utils/auth')
-
-
 
 
 const app = express();
@@ -29,7 +26,7 @@ const startServer = async () =>
 }
 
 startServer();
-app.use(express.static(__dirname + "/client/public"));
+app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
