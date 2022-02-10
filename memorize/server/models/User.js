@@ -1,4 +1,5 @@
 const { Schema, Model } = require('mongoose');
+const memorySchema = require('./Memory')
 
 const userSchema = new Schema({
     id: {
@@ -9,6 +10,8 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: true,
+        minlength: 4,
+        maxlength: 20,
         unique: true,
         trim: true
     },
@@ -17,14 +20,9 @@ const userSchema = new Schema({
         required: true,
         trim: true,
     },
-    memory: [
-        {
-            type: String,
-            trim: true
-        }
-    ]
+    memory: [memorySchema]
 });
 
-const User = model('User', userSchema);
+const User = Model('User', userSchema);
 
 module.exports = User;
