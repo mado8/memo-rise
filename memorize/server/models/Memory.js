@@ -1,4 +1,4 @@
-const { Schema, Model } = require('mongoose');
+const { Schema } = require('mongoose');
 const questionSchema = require('./Question');
 
 const memorySchema = new Schema({

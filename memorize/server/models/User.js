@@ -1,4 +1,4 @@
-const { Schema, Model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const memorySchema = require('./Memory')
 
 const userSchema = new Schema({
@@ -23,6 +23,6 @@ const userSchema = new Schema({
     memory: [memorySchema]
 });
 
-const User = Model('User', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
