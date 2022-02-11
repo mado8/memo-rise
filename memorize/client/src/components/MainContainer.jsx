@@ -1,13 +1,14 @@
 import React from 'react';
+import LoginForm from './LoginSignup.js/Login';
 // import components into main container and conditionally render them.
 
 
 const MainContainter = () => {
     return (
         <div>
-            <p>Hello World</p>
+            <LoginForm></LoginForm>
         </div>
     )
 }
 
-module.exports = MainContainter;
+export default MainContainter;
