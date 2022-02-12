@@ -6,7 +6,6 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     memoryCount: Int
-    password: String!
     email: String!
     memories: [Memory]!
   }
@@ -25,27 +24,31 @@ const typeDefs = gql`
     answer: String!
   }
 
-  type Query {
+  type Auth {
+    token: ID
     user: User
+  }
+
+  type Query {
+    me: User
   } 
 
-  input userInput {
+  input UserInput {
     _id: ID!
     username: String!
     memoryCount: Int
-    password: String!
     email: String!
   }
 
-  input memoryInput {
+  input MemoryInput {
     MemoryID: ID!
     title: String!
     description: String
   }
 
   type Mutation {
-    addUser(userData: userInput): User!
-    addMemory(memoryData: memoryInput): User!
+    addUser(userData: UserInput): Auth
+    addMemory(memoryData: MemoryInput): User!
     removeMemory(memoryID: ID!): User!
   }
 `
