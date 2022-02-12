@@ -34,10 +34,9 @@ const typeDefs = gql`
   } 
 
   input UserInput {
-    _id: ID!
     username: String!
-    memoryCount: Int
     email: String!
+    password: String!
   }
 
   input MemoryInput {
