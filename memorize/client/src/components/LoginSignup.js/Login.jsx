@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-const AuthService = require('../../utils/auth')
+// const AuthService = require('../../utils/auth')
 
 const LoginFormComponent = () => {
 
