@@ -21,7 +21,7 @@ export const ADD_MEMORY = gql`
     
       }
     }
-  }
+  
 `;
 
 export const LOGIN_USER = gql`
@@ -42,5 +42,5 @@ export const REMOVE_MEMORY = gql`
       MemoryID
       }
     }
-  }
+  
 `;
