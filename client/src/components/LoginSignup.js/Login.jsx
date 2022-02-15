@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
-// const AuthService = require('../../utils/auth')
-
-=======
-const AuthService = require('../../utils/auth')
-import { loginUser } from '../../utils/mutation';
+import { LOGIN_USER } from '../../utils/mutation';
 import Auth from '../../utils/auth';
+
+
+
+import {AuthService} from '../../utils/auth'
+
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
@@ -28,7 +28,7 @@ const LoginForm = () => {
         }
 
         try {
-            const response = await loginUser(userFormData);
+            const response = await LOGIN_USER(userFormData);
 
             if (!response.ok) {
                 throw new Error('something went wrong!');
@@ -36,7 +36,7 @@ const LoginForm = () => {
 
             const { token, user } = await response.json();
             console.log(user);
-            Auth.login(token);
+            Auth.LOGIN_USER(token);
         } catch (err) {
             console.error(err);
             setShowAlert(true);
@@ -49,7 +49,6 @@ const LoginForm = () => {
         });
     };
 }
->>>>>>> ae18d1bcf0c8002723ef92fa707e960be25c8eea
 const LoginFormComponent = () => {
 
     return (
