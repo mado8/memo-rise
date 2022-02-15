@@ -40,6 +40,17 @@ const resolvers = {
         },)
       return createMemory
     },
+    addQuestion: async (parent,{questionData: {title, answer}}, {MemoryID}) =>{
+      if(!MemoryID){
+        throw new AuthenticationError("MemoryID not found."); 
+      }
+      const createMemory = User.findOneAndUpdate({MemoryID},
+        {
+          $addToSet: {
+            savedQuestion: { title, answer },
+          },
+        },) 
+    }
   },
 };
 
