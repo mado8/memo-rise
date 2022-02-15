@@ -35,7 +35,7 @@ const resolvers = {
       const createMemory = User.findOneAndUpdate({username},
         {
           $addToSet: {
-            memory: { title, description },
+            memories: { title, description },
           },
         },)
       return createMemory

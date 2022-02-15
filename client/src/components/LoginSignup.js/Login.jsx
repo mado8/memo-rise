@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-const AuthService = require('../../utils/auth')
-import { loginUser } from '../../utils/mutation';
-import Auth from '../../utils/auth';
+import { LOGIN_USER } from '../../utils/mutation';
+import {AuthService} from '../../utils/auth'
+
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
@@ -24,7 +24,7 @@ const LoginForm = () => {
         }
 
         try {
-            const response = await loginUser(userFormData);
+            const response = await LOGIN_USER(userFormData);
 
             if (!response.ok) {
                 throw new Error('something went wrong!');
@@ -32,7 +32,7 @@ const LoginForm = () => {
 
             const { token, user } = await response.json();
             console.log(user);
-            Auth.login(token);
+            Auth.LOGIN_USER(token);
         } catch (err) {
             console.error(err);
             setShowAlert(true);
