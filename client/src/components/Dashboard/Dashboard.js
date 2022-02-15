@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import './dashboard.css'
-
+import React from 'react'
 
 
 function DashboardComponent ({ handlePageChange }) {    
