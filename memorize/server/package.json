@@ -13,13 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.6.3",
-    "apollo-server-core": "^3.6.3",
-    "apollo-server-express": "^3.6.3",
+    "apollo-server-express": "^2.11.0",
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-    "graphql": "^16.3.0",
+    "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.14"
+    "mongoose": "^5.9.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

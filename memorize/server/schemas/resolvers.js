@@ -12,37 +12,35 @@ const resolvers = {
       }
        throw new AuthenticationError("Must be logged in");
 
-    },
+    }
   },
   Mutation: {
     addUser: async (parent, {userData: {username, email, password}}, context) => {
-      console.log('19: ' , username)
-      const userFound = await User.findOne({username})
-      console.log("21:" , userFound)
-      if(userFound) {
+      
+      const newUser = await User.create({username, email, password});
+
+      if(!newUser) {
         throw new AuthenticationError("Username taken. Please choose another username.");
       }
-      const newUser = await User.create({username, email, password});
       console.log(newUser)
       const token = signToken(newUser);
       console.log(token)
-      return {token, newUser};
+
+      return {token, user: newUser};
     },
-    addMemory: async (parent, {userData: {username}}, context) => {
-      const findUser = await User.findOne({username});
-      if(!findUser) {
+    addMemory: async (parent, {memoryData: {title, description}}, {username}) => {
+      if(!username) {
         throw new AuthenticationError("User not found.");
       }
-      const createMemory = User.findOneAndUpdate({username: context.username},
+      const createMemory = User.findOneAndUpdate({username},
         {
           $addToSet: {
             memory: { title, description },
           },
         },)
       return createMemory
-    }
-  }
-
-}
+    },
+  },
+};
 
 module.exports = resolvers;

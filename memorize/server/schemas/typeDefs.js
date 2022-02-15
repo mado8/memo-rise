@@ -39,6 +39,7 @@ const typeDefs = gql`
     password: String!
   }
 
+
   input MemoryInput {
     title: String!
     description: String
