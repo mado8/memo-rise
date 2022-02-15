@@ -1,8 +1,4 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
-// const AuthService = require('../../utils/auth')
-
-=======
 const AuthService = require('../../utils/auth')
 import { loginUser } from '../../utils/mutation';
 import Auth from '../../utils/auth';
@@ -49,7 +45,6 @@ const LoginForm = () => {
         });
     };
 }
->>>>>>> ae18d1bcf0c8002723ef92fa707e960be25c8eea
 const LoginFormComponent = () => {
 
     return (
