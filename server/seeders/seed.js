@@ -4,7 +4,7 @@ const userSeeds = require('./test.json');
 
 db.once('open', async () => {
     await User.deleteMany({});
-    await User.create(userSeeds);
+    await User.insertMany(userSeeds);
 
 
   console.log('all done!');
