@@ -9,14 +9,15 @@ import { GET_ME } from '../../utils/querie';
 
 const DailyActivites = () => {
   const {activityButton, setActivityButton} = useState("Start Daily Activity")
+
   const startDailyActivities = () =>{
     setActivityButton = 120
     useInterval(() => {
       // Your custom logic here
       setActivityButton(count - 1);
     }, 1000);
-  
   }
+  
   return (
     <div>
       <div>
