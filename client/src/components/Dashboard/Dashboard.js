@@ -24,10 +24,10 @@ function DashboardComponent ({ handlePageChange }) {
              className="button button3">Create Memory</button>
 
 
-            {/* this is for future developments  */}
-             <button href="#createMemory" onClick={() => handlePageChange('createMemory')}
-             className="button button4">Quiz My Memory</button>
-             
+            {/* this is for future developments  
+             <button href="#quiz" onClick={() => handlePageChange('quiz')}
+             className="button button4">Quiz My Memory</button>*/}
+
         </div>
     )
 }
