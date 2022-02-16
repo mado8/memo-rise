@@ -1,22 +1,17 @@
-import React, { useState } from 'react'
-import { LOGIN_USER } from '../../utils/mutation';
-import Auth from '../../utils/auth';
+import React, { useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-// const [login, { error }] = useMutation(LOGIN_USER);
+import { ADD_USER } from '../utils/API';
+import Auth from '../utils/auth';
 
-import { AuthService } from '../../utils/auth'
-
-
-const LoginForm = () => {
-    const [userFormData, setUserFormData] = useState({ username: '', password: '' });
+const SignupForm = () => {
+    // set initial form state
+    const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+    // set state for form validation
     const [validated] = useState(false);
+    // set state for alert
     const [showAlert, setShowAlert] = useState(false);
-    const [login, { error }] = useMutation(LOGIN_USER);
-
-    useEffect(() => {
-        error ? setShowAlert(true) : setShowAlert(false);
-    }, [error]);
-
+    const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -33,14 +28,8 @@ const LoginForm = () => {
             event.stopPropagation();
         }
 
-
-        // try {
-        //     const { data } = await login({
-        //       variables: { ...userFormData },
-        //     });
-
         try {
-            const response = await login(userFormData);
+            const response = await addUser(userFormData);
 
             if (!response.ok) {
                 throw new Error('something went wrong!');
@@ -60,15 +49,15 @@ const LoginForm = () => {
             password: '',
         });
     };
-}
-const LoginFormComponent = () => {
 
     return (
+
+
         <div>
-            <form  noValidate validated={validated} onSubmit={handleFormSubmit}>
+            <form noValidate validated={validated} onSubmit={handleFormSubmit}>
                 <div>
                     <label>
-                        <input name='username' type='text' placeholder='Username'
+                        <input name='username' type='text' placeholder='Enter a valid username'
                             onChange={handleInputChange}
                             value={userFormData.username}
                             required />
@@ -78,7 +67,17 @@ const LoginFormComponent = () => {
                 </div>
                 <div>
                     <label>
-                        <input name='password' type='text' placeholder='Password'
+                        <input name='email' type='text' placeholder='Enter a valid email'
+                            onChange={handleInputChange}
+                            value={userFormData.username}
+                            required />
+
+
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input name='password' type='text' placeholder='Enter a valid Password'
                             onChange={handleInputChange}
                             value={userFormData.password}
                             required />
@@ -87,8 +86,8 @@ const LoginFormComponent = () => {
                 <button type='submit' > Submit</button>
             </form>
         </div>
-    )
-}
-export default LoginFormComponent
 
+    );
+};
 
+export default SignupForm;
