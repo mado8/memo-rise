@@ -1,4 +1,5 @@
 import React from 'react'
+import './dashboard.css'
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 
@@ -29,19 +30,26 @@ const conditionallyRendeering = () => {
     else {
         return(
 
-            <div>
+        <div>
+
+            <div id="app-dasboard-container"> 
+            <div id="dashboard-container">    
+            
             <Navbar></Navbar>
              {/* on click this button will go to Daily Activity component href*/}
             <a  href="#startDaily" onClick={() => handlePageChange('DailyActivites')} >
-                <button className="button button1">
+                <button id="button-circle-left">
                    START DAILY ACTIVITY
                 </button>
              </a>
 
+             
+          
+
 
             {/* on click this button will got to My memories component href */}
             <a  href="myMemories" onClick={() => handlePageChange('myMemories')}>
-                <button className="button button2">
+                <button id="mymemories-button">
                 My Memories
                 </button>
             </a>        
@@ -50,7 +58,7 @@ const conditionallyRendeering = () => {
 
             {/* on click this button will go to make a new memory  */}
             <a  href="#createMemory" onClick={() => handlePageChange('createMemory')}>
-                <button className="button button3">
+                <button id="create-button">
                    Create Memory
                 </button>
             </a>
@@ -60,6 +68,8 @@ const conditionallyRendeering = () => {
             {/* this is for future developments  
              <button href="#quiz" onClick={() => handlePageChange('quiz')}
              className="button button4">Quiz My Memory</button>*/}
+            </div>
+            </div>
 
         </div>
 

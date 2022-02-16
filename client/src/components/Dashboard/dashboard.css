@@ -1,0 +1,102 @@
+#app-dasboard-container {
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+#dashboard-containe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #FFDCA1;
+}
+
+#button-circle-left{
+    padding: 1.3rem 1rem;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    border: 3px solid rgb(230, 230, 230);
+    color: rgba(100, 100, 100, 0.75);
+    border-radius: 50%;
+    background: #cfcfcf;
+    box-shadow: 7px 7px 15px #d9d9d9, -7px -7px 15px #ffffff, inset 0 0 0 transparent, inset 0 0 0 transparent;
+    transition: 0.5s ease-in-out;
+
+}
+#button-circle-left:hover {
+    transform: scale(1.03);
+    color: white;
+    box-shadow: 7px 7px 15px 6px rgba(55, 55, 55, 0.2), -7px -7px 15px #ddd, inset -8rem 0 4px #ff9900, inset 0 0 0 transparent;
+    border-color: #ff8033;
+}
+
+#mymemories-button,
+#create-button{
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    color: #7e7e7e;
+}
+/* 
+#mymemories-button,
+#create-butto:hover {
+    transform: scale(1.03);
+    color: white;
+    box-shadow: 7px 7px 15px 6px rgba(55, 55, 55, 0.2), -7px -7px 15px #ddd, inset -8rem 0 4px #ff9900, inset 0 0 0 transparent;
+    border-color: #ff8033;
+
+} */
+
+@media screen and (max-width: 510px) {
+
+    #home-logo {
+        margin-top: 45%;
+    }
+    .orange-div {
+        padding-top: 160px
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #dashboard-container{
+        width: 200px;
+    }
+
+
+}
+
+@media screen and (max-width: 375px) {
+    #dashboard-container {
+        width: 150px;
+    }
+
+   
+    #dashboard-container {
+        padding-top: 25%;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    #dashboard-container {
+        width: 150px;
+    }
+
+ 
+}
+
+@media screen and (max-width: 180px) {
+    
+    #dashboard-container {
+        width: 100px;
+    }
+
+
+    #mymemories-button,
+    #create-button{
+        width: 100px;
+        height: 30px;
+    }   
+}
+
