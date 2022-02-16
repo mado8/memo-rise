@@ -1,12 +1,13 @@
 import React from 'react'
 
 
+
 function DashboardComponent ({ handlePageChange }) {    
 
     return (
         <div>
              {/* on click this button will go to Daily Activity component href*/}
-            <a  href="#startDaily" onClick={() => handlePageChange('startDaily')} >
+            <a  href="#startDaily" onClick={() => handlePageChange('DailyActivites')} >
                 <button className="button button1">
                    START DAILY ACTIVITY
                 </button>
