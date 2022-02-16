@@ -65,12 +65,23 @@
     background-color: #F09B41;
 }
 
+@media screen and (max-width: 510px) {
+
+    #home-logo {
+        margin-top: 45%;
+    }
+    .orange-div {
+        padding-top: 160px
+    }
+}
+
 @media screen and (max-width: 425px) {
     #home-login-buttons {
         width: 200px;
     }
 
     #home-logo {
+        margin-top: 50%;
         height: 200px;
         width: 200px;
     }
@@ -90,7 +101,10 @@
         width: 150px;
     }
     .orange-div {
-        padding-top: 220px
+        padding-top: 240px
+    }
+    #home-login-buttons {
+        padding-top: 25%;
     }
 }
 
@@ -106,4 +120,30 @@
     .orange-div {
         padding-top: 260px
     }
+}
+
+@media screen and (max-width: 180px) {
+    #home-login-buttons {
+        width: 100px;
+    }
+
+    #home-logo {
+        margin-top: 160%;
+        height: 100px;
+        width: 100px;
+    }
+
+    #home-logo p {
+        font-size: 1.2em;
+    }
+
+    .orange-div {
+        padding-top: 300px
+    }
+
+    #login-button,
+    #signup-button {
+        width: 100px;
+        height: 30px;
+    }   
 }
