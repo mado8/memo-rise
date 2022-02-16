@@ -1,11 +1,35 @@
 import React from 'react'
+import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 
 
 function DashboardComponent ({ handlePageChange }) {    
+const [pageChange, setPageChange] = useState ('dashboard')
 
-    return (
-        <div>
+const handlePageChange = (page) => {
+    setPageChange(page)
+}
+
+const conditionallyRendeering = () => {
+    if (pageChange === 'DailyActivities'){
+        return (
+            <div>This is going to be daiyly activities page</div>
+        )
+    }
+    else if (pageChange === 'myMemories'){
+        return (
+            <div> my memories page</div>
+        )
+    }
+    else if (pageChange === 'createMemory') {
+        return (
+            <div>create memory</div>
+        )
+    }
+    else {
+        return(
+
+            <div>
             <Navbar></Navbar>
              {/* on click this button will go to Daily Activity component href*/}
             <a  href="#startDaily" onClick={() => handlePageChange('DailyActivites')} >
@@ -38,6 +62,18 @@ function DashboardComponent ({ handlePageChange }) {
              className="button button4">Quiz My Memory</button>*/}
 
         </div>
+
+
+        )
+    }
+}
+
+
+    return (
+        <>
+        {conditionallyRendeering()}
+        </>
+
     )
 }
 export default DashboardComponent
