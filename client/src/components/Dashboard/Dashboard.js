@@ -6,20 +6,29 @@ function DashboardComponent ({ handlePageChange }) {
     return (
         <div>
              {/* on click this button will go to Daily Activity component href*/}
-             <button   href="#startDaily" onClick={() => handlePageChange('startDaily')} 
-             className="button button1">START DAILY ACTIVITY</button>
-
+            <a  href="#startDaily" onClick={() => handlePageChange('startDaily')} >
+                <button className="button button1">
+                   START DAILY ACTIVITY
+                </button>
+             </a>
 
 
             {/* on click this button will got to My memories component href */}
-             <button href="myMemories" onClick={() => handlePageChange('myMemories')}
-             className="button button2">My Memories</button>
+            <a  href="myMemories" onClick={() => handlePageChange('myMemories')}>
+                <button className="button button2">
+                My Memories
+                </button>
+            </a>        
 
 
 
             {/* on click this button will go to make a new memory  */}
-             <button href="#createMemory" onClick={() => handlePageChange('createMemory')}
-             className="button button3">Create Memory</button>
+            <a  href="#createMemory" onClick={() => handlePageChange('createMemory')}>
+                <button className="button button3">
+                   Create Memory
+                </button>
+            </a>
+
 
 
             {/* this is for future developments  
