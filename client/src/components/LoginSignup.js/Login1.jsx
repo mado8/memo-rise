@@ -1,98 +1,67 @@
-import React, { useState } from 'react'
-const AuthService = require('../../utils/auth')
+import React from 'react'
+import './LoginSignup.css'
 
 const LoginFormComponent = () => {
-
-  const [userFormData, setUserFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  })
-
-  const [errors, setErrors] = useState({})
-
-  const handleChange = (e) => {
-    setUserFormData[e.target.name] = e.target.value
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (validate()) {
-
-      setUserFormData['name'] = ''
-      setUserFormData['email'] = ''
-      setUserFormData['message'] = ''
-
-      //re-route to homepage from here if successfully logged in
-    }
-  }
-
-  const validate = () => {
-
-    setErrors = {}
-    let isValid = true
-
-    if (!userFormData['name']) {
-      isValid = false
-      errors['name'] = 'Please enter your name.'
-    }
-
-    if (!userFormData['email']) {
-      isValid = false
-      errors['email'] = 'Please enter your email Address.'
-    }
-
-    if (typeof userFormData['email'] !== 'undefined') {
-      var pattern = new RegExp(
-        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-      )
-      if (!pattern.test(userFormData['email'])) {
-        isValid = false
-        errors['email'] = 'Please enter valid email address.'
-      }
-    }
-
-    if (!userFormData['message']) {
-      isValid = false
-      errors['message'] = 'Please enter your message.'
-    }
-
-    if (errors.name) {
-      alert(errors.name)
-    }
-    if (errors.email) {
-      alert(errors.email)
-    }
-    if (errors.message) {
-      alert(errors.message)
-    }
-
-    // add auth
-
-    return isValid
-  }
-
   return (
-    <div>
-      <form onSubmit={handleSubmit()}>
-        <div>
-          <label>
-            <input name='username' type='text' placeholder='Username' onChange={handleChange()} />
-          </label>
+    <>
+      <div>
+        <div id='login-form-container'>
+          <form id='login-form'>
+            <div id='form-container'>
+              <div id='form-header'>
+                <h3>Login</h3>
+              </div>
+              <div id="form-input-container">
+                <label>
+                  <input
+                    class='form-input'
+                    name='username'
+                    type='text'
+                    placeholder='Username'
+                  />
+                </label>
+                <label>
+                  <input
+                    class='form-input'
+                    name='email'
+                    type='email'
+                    placeholder='Email'
+                  />
+                </label>
+                <label>
+                  <input
+                    class='form-input'
+                    name='password'
+                    type='text'
+                    placeholder='Password'
+                  />
+                </label>
+              </div>
+              <div id="form-buttons">
+                <button id='login-submit' type='submit'>
+                  Login
+                </button>
+                <div>
+                  <button id='signup'>Signup</button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-        <div>
-          <label>
-            <input name='email' type='text' placeholder='Email' onChange={handleChange()} />
-          </label>
-        </div>
-        <div>
-          <label>
-            <input name='password' type='text' placeholder='Password' onChange={handleChange()} />
-          </label>
-        </div>
-      </form>
-      <button type='submit'> Submit</button>
-    </div>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 1440 320'
+          class='wave-container-2'
+        >
+          <path
+            fill='#F09B41'
+            fill-opacity='1'
+            d='M0,224L60,192C120,160,240,96,360,106.7C480,117,600,203,720,218.7C840,235,960,181,1080,160C1200,139,1320,149,1380,154.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'
+          ></path>
+        </svg>
+      </div>
+      <div id='orange-section'></div>
+    </>
   )
 }
 

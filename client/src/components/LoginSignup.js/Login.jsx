@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { LOGIN_USER } from '../../utils/mutation';
 import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
 
 // const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -27,13 +28,6 @@ const LoginForm = () => {
         event.preventDefault();
 
         // check if form has everything (as per react-bootstrap docs)
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
-
         // try {
         //     const { data } = await login({
         //       variables: { ...userFormData },
@@ -60,12 +54,12 @@ const LoginForm = () => {
             password: '',
         });
     };
-}
-const LoginFormComponent = () => {
+
+
 
     return (
         <div>
-            <form  noValidate validated={validated} onSubmit={handleFormSubmit}>
+            <form noValidate validated={validated} onSubmit={handleFormSubmit}>
                 <div>
                     <label>
                         <input name='username' type='text' placeholder='Username'
@@ -87,8 +81,12 @@ const LoginFormComponent = () => {
                 <button type='submit' > Submit</button>
             </form>
         </div>
-    )
-}
+    );
+};
+
 export default LoginFormComponent
+
+
+
 
 
