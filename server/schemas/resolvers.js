@@ -12,7 +12,18 @@ const resolvers = {
       }
       throw new AuthenticationError("Must be logged in");
 
-    }
+    },
+    // allResults: async () => {
+      
+    //   return User.find({}).populate('memories').populate({
+    //     path: 'memories',
+    //     populate: 'questions'
+    //   });
+    // },
+
+    // }
+
+    
   },
   Mutation: {
     addUser: async (parent, { userData: { username, email, password } }, context) => {
@@ -46,6 +57,7 @@ const resolvers = {
         })
       return createMemory
     },
+    
     addQuestion: async (parent, { questionData: { title, answer } }, { MemoryID }) => {
       if (!MemoryID) {
         throw new AuthenticationError("MemoryID not found.");
