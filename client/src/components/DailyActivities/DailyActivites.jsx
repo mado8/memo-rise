@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
-import { GET_ME } from '../../utils/querie';
+import './DailyActivites.css'
+// import { QUERY_USER } from '../utils/queries';
+// import { GET_ME } from '../../utils/querie';
 // import components into main container and conditionally render them.
 // import Auth from '../utils/auth';
 // const [getME, { error }] = useQuery(GET_ME);
@@ -8,33 +9,37 @@ import { GET_ME } from '../../utils/querie';
 
 
 const DailyActivites = () => {
-    
-      const [seconds, setSeconds] = useState(120);
-    
-      useEffect(() => {
-        const interval = setInterval(() => {
-          setSeconds(seconds => seconds - 1);
-        }, 1000);
-        return () => clearInterval(interval);
-      }, []);
-        
-  
+
+  const [seconds, setSeconds] = useState(120);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(seconds => seconds - 1);
+      if (seconds === 0) clearInterval(interval);
+    }, 1000);
+    return console.log("OUT OF TIME")
+  }, []);
+
+
 
   return (
-    <div>
+    <body>
       <div>
-        <h1> Daily Activities</h1>
-        <h2>{seconds}</h2>
-        <p>Memory Question</p>
-        <input placeholder='Answer Here'></input>
-        <button>Submit</button>
+        <h1 className='title'> Daily Activities</h1>
+        <h2 className='timer'>{seconds}</h2>
+        <div className='question'>
+          Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </div>
+    
+        <input className='answerbox' placeholder='Answer Here'></input>
+        <button className='subbutton'>Submit</button>
       </div>
-        <div>
-          <div>
-            
-          </div>
-        </div>
-        </div>
+      <div>
+      </div>
+    </body>
   )
 }
 
