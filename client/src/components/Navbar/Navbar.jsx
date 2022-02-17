@@ -1,9 +1,7 @@
 import React from 'react'
 import './navbar.css'
-// import { useState } from 'react'
-// import SignUp from './LoginSignup/Login1';
-import LoginForm from './LoginSignup/Login';
-
+import LoginForm from '../LoginSignup.js/Login'
+// import { Link } from 'react-router-dom';
 import {
     BrowserRouter as
       Router, Route,
@@ -13,35 +11,33 @@ import {
   
   export default function Navbar() {
     return (
-      <Router>    
-
-            <div>
-              <ul>
+      <Router>
+        
+        <div>
+              <ul  >
 
                 <li className="nav-item">
-                  
-                 <button id='logoutButton'> <Link to="/logout">Sign Out </Link></button>
-                </li>          
+                  {/* <a className="nav-link" href="#">Features</a> */}
+                <button> <Link to="/logout">Sign Out </Link> </button> 
+                </li>
               
+
+
               </ul>
             </div>
-              
-        
-  
-  
   
   
           <Switch>
             <Route path="/logout">
-              < LoginForm/>
+              <logout />
             </Route>
-
+            
           </Switch>
   
   
   
   
-        
+    
       </Router>
   
     )

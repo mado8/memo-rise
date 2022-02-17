@@ -3,7 +3,6 @@ import './dashboard.css'
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 
-
 function DashboardComponent ({ handlePageChange }) {    
 const [pageChange, setPageChange] = useState ('dashboard')
 
