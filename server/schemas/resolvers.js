@@ -1,7 +1,7 @@
 const User = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../util/auth');
-const { default: context } = require('react-bootstrap/esm/AccordionContext');
+
 
 const resolvers = {
   Query: {
@@ -41,11 +41,13 @@ const resolvers = {
         })
       return createMemory
     },
-    addQuestion: async (parent, { questionData: { title, answer } }, { MemoryID }) => {
-      if (!MemoryID) {
+    addQuestion: async (parent, { questionData: { title, answer } }, context) => {
+      console.log(context)
+      if (!username) {
         throw new AuthenticationError("MemoryID not found.");
       }
-      const createMemory = User.findOneAndUpdate({ MemoryID },
+      const createMemory = User.findOneAndUpdate(
+        { _id: context.user._id },
         {
           $addToSet: {
             savedQuestion: { title, answer },
@@ -78,7 +80,7 @@ const resolvers = {
     //   const token = signToken(user);
     //   return { token, user };
     // },
- 
+
 
   },
 };
