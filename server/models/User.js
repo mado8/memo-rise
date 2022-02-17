@@ -20,7 +20,7 @@ const userSchema = new Schema({
         required: true,
         trim: true
     },
-    memory: [memorySchema]
+    memories: [{memorySchema}]
 });
 
 const User = model('User', userSchema);
