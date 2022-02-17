@@ -21,7 +21,13 @@ const userSchema = new Schema({
         required: true,
         trim: true
     },
-    memories: [{memorySchema}]
+    // memories: [{memorySchema}]
+    memories: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Memory'
+        }
+    ]
 });
 // userSchema.pre('save', async function (next) {
 //     if (this.isNew || this.isModified('password')) {
