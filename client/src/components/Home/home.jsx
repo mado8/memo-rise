@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Login from '../LoginSignup.js/Login1'
 import './home.css'
 
 const AppHome = () => {
@@ -11,11 +12,11 @@ const AppHome = () => {
   const renderPage = () => {
       if(renderForm === "signup") {
           return (
-              <div>import signup component here</div>
+              <h1>sign up page here</h1>
           )
       } else if(renderForm === "login") {
           return (
-              <div>import login component here</div>
+             <Login></Login>
           )
       } else {
         return (
