@@ -13,4 +13,6 @@ const questionSchema = new Schema({
     }
 })
 
-module.exports = questionSchema;
+const Question = model('Memory', questionSchema);
+
+module.exports = Question;
