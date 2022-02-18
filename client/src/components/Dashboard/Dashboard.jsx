@@ -1,31 +1,57 @@
 import React from 'react'
+import './dashboard.css'
+import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 
-function DashboardComponent ({ handlePageChange }) {    
+function DashboardComponent () {    
+const [pageChange, setPageChange] = useState ('dashboard')
 
-    return (
+const handlePageChange = (page) => {
+    setPageChange(page)
+}
+
+const conditionallyRendeering = () => {
+    if (pageChange === 'DailyActivities'){
+        return (
+            <div>This is going to be daiyly activities page</div>
+        )
+    }
+    else if (pageChange === 'myMemories'){
+        return (
+            <div> my memories page</div>
+        )
+    }
+    else if (pageChange === 'createMemory') {
+        return (
+            <div>create memory</div>
+        )
+    }
+    else {
+        return(
+
         <div>
+
+            <div id="main"> 
+            <div id="sub-main">   
+            
             <Navbar></Navbar>
              {/* on click this button will go to Daily Activity component href*/}
-            <a  href="#startDaily" onClick={() => handlePageChange('startDaily')} >
-                <button className="button button1">
-                   START DAILY ACTIVITY
-                </button>
-             </a>
-
-
+            <a  href="#startDaily" onClick={() => handlePageChange('DailyActivites')} >            
+           <button id="button-three">Daily Activities</button>
+    
+             </a>         
+          
             {/* on click this button will got to My memories component href */}
             <a  href="myMemories" onClick={() => handlePageChange('myMemories')}>
-                <button className="button button2">
+                <button id="button-three">
                 My Memories
                 </button>
-            </a>        
-
+            </a>  
 
 
             {/* on click this button will go to make a new memory  */}
             <a  href="#createMemory" onClick={() => handlePageChange('createMemory')}>
-                <button className="button button3">
+                <button id="button-three">
                    Create Memory
                 </button>
             </a>
@@ -35,8 +61,22 @@ function DashboardComponent ({ handlePageChange }) {
             {/* this is for future developments  
              <button href="#quiz" onClick={() => handlePageChange('quiz')}
              className="button button4">Quiz My Memory</button>*/}
+            </div>
+            </div>
 
         </div>
+
+
+        )
+    }
+}
+
+
+    return (
+        <>
+        {conditionallyRendeering()}
+        </>
+
     )
 }
 export default DashboardComponent
