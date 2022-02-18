@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const questionSchema = require('./Question');
+
 
 const memorySchema = new Schema({
     title: {
@@ -24,6 +24,6 @@ const memorySchema = new Schema({
 });
 
 const Memory = model('Memory', memorySchema);
-module.exports = memorySchema;
+module.exports = Memory;
 
 // module.exports = memorySchema;

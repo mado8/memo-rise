@@ -1,2 +1,5 @@
 const User = require('./User');
-module.exports = User;
+const Memory = require('./Memory');
+const Question = require('./Question');
+
+module.exports = { User , Memory, Question};
