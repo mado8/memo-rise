@@ -1,0 +1,149 @@
+
+
+#memory-form-container {
+    background-color: #FFDCA1;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+#form-container {
+    margin-top: 200px;
+    background-color: #fff;
+    padding-bottom: 100px;
+    border-radius: 15px;
+    z-index: 100;
+}
+
+#form-input-container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#form-header {
+    text-align: center;
+    height: 60px;
+    border-radius: 15px 15px 0px 0px;
+    padding-top: 5px;
+    margin-bottom: 40px;
+    background-color: #F09B41;
+    color: #fff;
+}
+
+.form-input {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background-color: #ececec;
+}
+
+#form-buttons {
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#memory-submit {
+    color: #fff;
+    background-color: #F09B41;
+    width: 100%;
+    margin-top: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+}
+
+#memory-submit:hover {
+    background-color: #FFDCA1;
+    transition: .6s;
+    color: #fff;
+}
+
+#signup {
+    color: #F09B41;
+    background-color: transparent;
+    margin-top: 125px;
+    width: 50px;
+    margin-top: 30px;
+    padding: 2px;
+    border: none;
+    border-bottom: 1px solid #F09B41;
+}
+
+.wave-container-2 {
+    width: 100%;
+    z-index: -100;
+    top:450px;
+    display: block;
+    position: relative;
+    background-color: #FFDCA1;
+    color: #FFF;
+    text-align: center;
+    overflow: hidden;
+}
+
+#orange-section {
+    position: relative;
+    top: 400px;
+    background-color: #F09B41;
+    width: 100%;
+    height: 120px;
+    z-index: -10;
+}
+
+@media screen and (max-width: 1024px) {
+    #memory-form {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #orange-section {
+       height: 200px; 
+       top: 450px;
+    }
+
+    #memory-form-container {
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #orange-section {
+       height: 200px; 
+    }
+    #memory-form {
+        width: 70%;
+    }
+    #form-container {
+        padding-bottom: 50px;
+    }
+    #form-input-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 225px) {
+    #orange-section {
+       height: 175px; 
+    }
+    #memory-form {
+        width: 85%;
+    }
+    #form-container {
+        padding-bottom: 50px;
+    }
+    #form-input-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
