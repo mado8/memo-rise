@@ -16,10 +16,10 @@ import {
         <div>
               <ul  >
 
-                <li className="nav-item">
+              
                   {/* <a className="nav-link" href="#">Features</a> */}
                 <button> <Link to="/logout">Sign Out </Link> </button> 
-                </li>
+              
               
 
 

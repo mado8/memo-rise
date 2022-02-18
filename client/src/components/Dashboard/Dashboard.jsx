@@ -3,7 +3,7 @@ import './dashboard.css'
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 
-function DashboardComponent ({ handlePageChange }) {    
+function DashboardComponent () {    
 const [pageChange, setPageChange] = useState ('dashboard')
 
 const handlePageChange = (page) => {
@@ -31,33 +31,27 @@ const conditionallyRendeering = () => {
 
         <div>
 
-            <div id="app-dasboard-container"> 
-            <div id="dashboard-container">    
+            <div id="main"> 
+            <div id="sub-main">   
             
             <Navbar></Navbar>
              {/* on click this button will go to Daily Activity component href*/}
-            <a  href="#startDaily" onClick={() => handlePageChange('DailyActivites')} >
-                <button id="button-circle-left">
-                   START DAILY ACTIVITY
-                </button>
-             </a>
-
-             
+            <a  href="#startDaily" onClick={() => handlePageChange('DailyActivites')} >            
+           <button id="button-three">Daily Activities</button>
+    
+             </a>         
           
-
-
             {/* on click this button will got to My memories component href */}
             <a  href="myMemories" onClick={() => handlePageChange('myMemories')}>
-                <button id="mymemories-button">
+                <button id="button-three">
                 My Memories
                 </button>
-            </a>        
-
+            </a>  
 
 
             {/* on click this button will go to make a new memory  */}
             <a  href="#createMemory" onClick={() => handlePageChange('createMemory')}>
-                <button id="create-button">
+                <button id="button-three">
                    Create Memory
                 </button>
             </a>
