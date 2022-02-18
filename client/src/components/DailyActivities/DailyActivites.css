@@ -1,0 +1,125 @@
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #FFDCA1;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    background-color: #F09B41;
+    border-radius: 5%;
+    height: 50px;
+    width: 50px;
+}
+
+.question {
+ 
+}   
+
+.answerbox {
+    width: 250px;
+    padding-top: 10%;
+    display: flex;
+    text-align: center;
+    position: absolute;
+    margin-left: 45%;
+}
+
+.subbutton {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    color: #7e7e7e;
+}
+
+
+
+@media screen and (max-width: 510px) {
+
+    .title{
+        margin-top: 45%;
+    }
+    .orange-div {
+        padding-top: 160px
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #home-login-buttons {
+        width: 200px;
+    }
+
+    #home-logo {
+        margin-top: 50%;
+        height: 200px;
+        width: 200px;
+    }
+    .orange-div {
+        padding-top: 200px
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #home-login-buttons {
+        width: 150px;
+    }
+
+    #home-logo {
+        margin-top: 90%;
+        height: 150px;
+        width: 150px;
+    }
+    .orange-div {
+        padding-top: 260px
+    }
+    #home-login-buttons {
+        padding-top: 25%;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    #home-login-buttons {
+        width: 150px;
+    }
+
+    #home-logo {
+        height: 150px;
+        width: 150px;
+    }
+    .orange-div {
+        padding-top: 310px
+    }
+}
+
+@media screen and (max-width: 180px) {
+    #home-login-buttons {
+        width: 100px;
+    }
+
+    #home-logo {
+        margin-top: 160%;
+        height: 100px;
+        width: 100px;
+    }
+
+    #home-logo p {
+        font-size: 1.2em;
+    }
+
+    .orange-div {
+        padding-top: 400px
+    }
+
+    #login-button,
+    #signup-button {
+        width: 100px;
+        height: 30px;
+    }   
+}
