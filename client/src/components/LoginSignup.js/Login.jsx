@@ -34,7 +34,9 @@ const LoginForm = () => {
         //     });
 
         try {
-            const response = await login(userFormData);
+            console.log(userFormData)
+
+            const response = await login(userFormData.username, userFormData.password);
 
             if (!response.ok) {
                 throw new Error('something went wrong!');
@@ -44,13 +46,13 @@ const LoginForm = () => {
             console.log(user);
             Auth.login(token);
         } catch (err) {
-            console.error(err);
+            console.log(err);
             setShowAlert(true);
         }
 
         setUserFormData({
             username: '',
-            email: '',
+            // email: '',
             password: '',
         });
     };
@@ -59,7 +61,7 @@ const LoginForm = () => {
 
     return (
         <div>
-            <form noValidate validated={validated} onSubmit={handleFormSubmit}>
+            <form validated={`${validated}`} onSubmit={handleFormSubmit}>
                 <div>
                     <label>
                         <input name='username' type='text' placeholder='Username'

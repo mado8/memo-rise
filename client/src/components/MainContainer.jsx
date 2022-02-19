@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateMemory from './CreateMemory/CreateMemory';
+// import CreateMemory from './CreateMemory/CreateMemory';
 import Home from './Home/home'
 
 
@@ -8,7 +8,8 @@ import Home from './Home/home'
 const MainContainter = () => {
     return (
         <div>
-            <CreateMemory></CreateMemory>
+            {/* <CreateMemory></CreateMemory> */}
+            <Home />
         </div>
     )
 }
