@@ -1,4 +1,4 @@
-const User = require('../models');
+const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../util/auth');
 
@@ -63,6 +63,7 @@ const resolvers = {
         throw new AuthenticationError("MemoryID not found.");
       }
       const createMemory = User.findOneAndUpdate({ MemoryID },
+        
         {
           $addToSet: {
             savedQuestion: { title, answer },
@@ -79,22 +80,24 @@ const resolvers = {
     },
 
     // //login user
-    // login: async (parent, { email, password }) => {
-    //   const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      console.log(username)
+      const user = await User.findOne({ username });
 
-    //   if (!user) {
-    //     throw new AuthenticationError('No user with this email found!');
-    //   }
+      if (!user) {
+        throw new AuthenticationError('No user with this email found!');
+      }
+      console.log(user.password)
 
-    //   const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
-    //   if (!correctPw) {
-    //     throw new AuthenticationError('Incorrect password!');
-    //   }
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
 
-    //   const token = signToken(user);
-    //   return { token, user };
-    // },
+      const token = signToken(user);
+      return { token, user };
+    },
  
 
   },

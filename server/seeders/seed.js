@@ -1,47 +1,37 @@
 const db = require('../config/connection');
-const User = require('../models');
+const { User , Memory, Question} = require('../models');
 // const userSeeds = require('./test.json');
 
-const memoryData = require('./memoryData.json');
-const userData = require('./userData.json');
-const questionData = require('./questionData.json');
+const memoryData = require('./memory.json');
+const userData = require('./userdata.json');
+const questionData = require('./question.json');
 
 
 db.once('open', async () => {
   // clean database
-  await user.deleteMany({});
-  await memory.deleteMany({});
-  await question.deleteMany({});
+  await User.deleteMany({});
+  await Memory.deleteMany({});
+  await Question.deleteMany({});
 
   // bulk create each model
-  const user = await User.insertMany(schoolData);
-  const memory = await Memory.insertMany(classData);
-  const question = await Question.insertMany(professorData);
+  const user = await User.create(userData);
+  const memory = await Memory.insertMany(memoryData);
+  const question = await Question.insertMany(questionData);
 
-  for (newMemory of users) {
+// bulkCreate
   
-    const tempUser = user[user.length-1];
-    tempUser.push(newUser._id);
-    await tempUser.save();
-
-    
-    const tempMemory = memory[memory-1];
-    newMemory.memory = tempMemory._id;
-    await newClass.save();
-
-
-    tempMemory.question.push(newMemory._id);
-    await tempMemory.save();
-  }
+console.log('all done!');
+process.exit(0);
 }
 );
 
 
-// db.once('open', async () => {
-//     await User.deleteMany({});
-//     await User.insertMany(userSeeds);
 
+// resolver (context/model)
+// test them in graphql
+// show auth middleware
+// seeds working with our model
+// login
+// at the end if we get time pwa
 
-//   console.log('all done!');
-//   process.exit(0);
-// });
+// create user manually seeds isnt bcrpty to add users

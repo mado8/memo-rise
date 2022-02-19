@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { LOGIN_USER } from '../../utils/mutation';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
@@ -84,7 +84,7 @@ const LoginForm = () => {
     );
 };
 
-export default LoginFormComponent
+export default LoginForm
 
 
 

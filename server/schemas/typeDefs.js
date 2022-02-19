@@ -32,6 +32,7 @@ const typeDefs = gql`
   type Query {
     me: User
   } 
+  
 
   input UserInput {
     username: String!
@@ -49,12 +50,15 @@ const typeDefs = gql`
     title: String!
     answer: String!
   }
+  
+
 
   type Mutation {
     addUser(userData: UserInput): Auth
     addMemory(memoryData: MemoryInput): User!
     removeMemory(memoryID: ID!): User!
     addQuestion(questionData: QuestionInput): User!
+    login(username: String!, password: String!): Auth
   }
 `
 
