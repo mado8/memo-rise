@@ -1,49 +1,41 @@
-import React from 'react'
-import './LoginSignup.css'
+import React, { useState, useEffect } from 'react';
+// const CreateMemo
+import './CreateMemory.css'
 
-const LoginFormComponent = () => {
+
+const CreateMemory = () => {
+
   return (
     <>
       <div>
-        <div id='login-form-container'>
-          <form id='login-form'>
+        <div id='memory-form-container'>
+          <form id='memory-form'>
             <div id='form-container'>
               <div id='form-header'>
-                <h3>Login</h3>
+                <h3>Memory</h3>
               </div>
               <div id="form-input-container">
                 <label>
                   <input
                     class='form-input'
-                    name='username'
+                    name='memory'
                     type='text'
-                    placeholder='Username'
+                    placeholder='Add a Memory'
                   />
                 </label>
                 <label>
                   <input
                     class='form-input'
-                    name='email'
-                    type='email'
-                    placeholder='Email'
-                  />
-                </label>
-                <label>
-                  <input
-                    class='form-input'
-                    name='password'
+                    name='answer'
                     type='text'
-                    placeholder='Password'
+                    placeholder='Add an Answer'
                   />
                 </label>
               </div>
               <div id="form-buttons">
-                <button id='login-submit' type='submit'>
-                  Login
+                <button id='memory-submit' type='submit'>
+                  Submit Memory
                 </button>
-                <div>
-                  <button id='signup'>Signup</button>
-                </div>
               </div>
             </div>
           </form>
@@ -65,4 +57,17 @@ const LoginFormComponent = () => {
   )
 }
 
-export default LoginFormComponent
+
+
+
+export default CreateMemory
+
+
+
+
+
+
+
+// Insert Memory Box
+// Insert Answer box
+// CREATE_MEMORY

@@ -1,19 +1,30 @@
-const User = require('../models');
+const { User, Memory, Question } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../util/auth');
-const { default: context } = require('react-bootstrap/esm/AccordionContext');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       console.log(context.user, "this is test")
+      console.log(context)
       if (context.user) {
 
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("Must be logged in");
 
-    }
+    },
+    // allResults: async () => {
+      
+    //   return User.find({}).populate('memories').populate({
+    //     path: 'memories',
+    //     populate: 'questions'
+    //   });
+    // },
+
+    // }
+
+    
   },
   Mutation: {
     addUser: async (parent, { userData: { username, email, password } }, context) => {
@@ -29,23 +40,51 @@ const resolvers = {
 
       return { token, user: newUser };
     },
-    addMemory: async (parent, { memoryData: { title, description } }, { username }) => {
-      if (!username) {
+    addMemory: async (parent, { memoryData: { title, description } }, { user }) => {
+
+      // const findMemorybyID = User.findOne({username: 'myself'})
+      // console.log(findMemorybyID)
+      // const { username } = user;
+      console.log(user);
+      var usernameTemp = user.username
+      // const findUser = await User.findOne({ username });
+      console.log(usernameTemp)
+
+      if (!usernameTemp) {
         throw new AuthenticationError("User not found.");
       }
-      const createMemory = User.findOneAndUpdate({ username },
+      
+
+      // const findUser = await User.findOne({ username })
+      // findUser.Memory
+      // 
+      const memory = await Memory.create({ title, description })
+      memory.save();
+      // const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
+      const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
+
         {
+          
           $addToSet: {
-            memories: { title, description },
+            memories: memory,
           },
         })
       return createMemory
     },
-    addQuestion: async (parent, { questionData: { title, answer } }, { MemoryID }) => {
-      if (!MemoryID) {
+    
+    addQuestion: async (parent, { questionData: { title, answer } }, { user }) => {
+
+      var usernameTemp = user.username
+
+      if (!usernameTemp) {
         throw new AuthenticationError("MemoryID not found.");
       }
-      const createMemory = User.findOneAndUpdate({ MemoryID },
+      // const createMemory = User.findOneAndUpdate({ usernameTemp },
+      const question = await Question.create({ title, description })
+      question.save();
+      const createQuestion = await User.findOneAndUpdate({ username: usernameTemp },
+ 
+
         {
           $addToSet: {
             savedQuestion: { title, answer },
@@ -59,7 +98,29 @@ const resolvers = {
       }
       let removedMemory = Memory.findOneAndDelete({ "MemoryID": memoryID })
       return removedMemory
-    }
+    },
+
+    // //login user
+    login: async (parent, { username, password }) => {
+      console.log(username)
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        throw new AuthenticationError('No user with this email found!');
+      }
+      console.log(user.password)
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+
+      const token = signToken(user);
+      return { token, user };
+    },
+ 
+
   },
 };
 

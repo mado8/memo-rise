@@ -1,5 +1,5 @@
-const { Schema } = require('mongoose');
-const questionSchema = require('./Question');
+const { Schema, model } = require('mongoose');
+
 
 const memorySchema = new Schema({
     title: {
@@ -14,7 +14,16 @@ const memorySchema = new Schema({
         maxlength: 280,
         trim: true
     },
-    questions: [questionSchema]
+    // questions: [questionSchema]
+    questions: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Question'
+        }
+    ]
 });
 
-module.exports = memorySchema;
+const Memory = model('Memory', memorySchema);
+module.exports = Memory;
+
+// module.exports = memorySchema;
