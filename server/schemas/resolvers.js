@@ -42,9 +42,6 @@ const resolvers = {
     },
     addMemory: async (parent, { memoryData: { title, description } }, { user }) => {
 
-      // const findMemorybyID = User.findOne({username: 'myself'})
-      // console.log(findMemorybyID)
-      // const { username } = user;
       console.log(user);
       var usernameTemp = user.username
       // const findUser = await User.findOne({ username });
@@ -53,26 +50,21 @@ const resolvers = {
       if (!usernameTemp) {
         throw new AuthenticationError("User not found.");
       }
-      
 
-      // const findUser = await User.findOne({ username })
-      // findUser.Memory
-      // 
       const memory = await Memory.create({ title, description })
-      memory.save();
-      // const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
-      const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
+      console.log(memory)
 
-        {
-          
-          $addToSet: {
-            memories: memory,
-          },
-        })
-      return createMemory
+      // const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
+      const createMemory = await User.findOneAndUpdate(
+        { username: usernameTemp },
+        { $addToSet: { memories: memory._id } }
+      )
+
+      console.log(createMemory)
+      return memory;
     },
     
-    addQuestion: async (parent, { questionData: { title, answer } }, { user }) => {
+    addQuestion: async (parent, { questionData: { question, answer }, memoryID }, { user }) => {
 
       var usernameTemp = user.username
 
@@ -80,16 +72,16 @@ const resolvers = {
         throw new AuthenticationError("MemoryID not found.");
       }
       // const createMemory = User.findOneAndUpdate({ usernameTemp },
-      const question = await Question.create({ title, description })
-      question.save();
-      const createQuestion = await User.findOneAndUpdate({ username: usernameTemp },
- 
+      const questionData = await Question.create({ question, answer })
+      
+      console.log(questionData)
 
-        {
-          $addToSet: {
-            savedQuestion: { title, answer },
-          },
-        })
+      const createQuestion = await Memory.findByIdAndUpdate(
+        memoryID,
+        { $addToSet: { questions: questionData._id}}
+        )
+
+      return createQuestion;
     },
     removeMemory: async (parent, { memoryID }, context) => {
       const findMemory = Memory.findOne(memoryID)
