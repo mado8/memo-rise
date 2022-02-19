@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Memory, Question } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../util/auth');
 
@@ -6,6 +6,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       console.log(context.user, "this is test")
+      console.log(context)
       if (context.user) {
 
         return await User.findOne({ _id: context.user._id });
@@ -43,27 +44,47 @@ const resolvers = {
 
       // const findMemorybyID = User.findOne({username: 'myself'})
       // console.log(findMemorybyID)
-      const { username } = user;
+      // const { username } = user;
+      console.log(user);
+      var usernameTemp = user.username
+      // const findUser = await User.findOne({ username });
+      console.log(usernameTemp)
 
-
-      if (!username) {
+      if (!usernameTemp) {
         throw new AuthenticationError("User not found.");
       }
-      const createMemory = User.findOneAndUpdate({ username },
+      
+
+      // const findUser = await User.findOne({ username })
+      // findUser.Memory
+      // 
+      const memory = await Memory.create({ title, description })
+      memory.save();
+      // const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
+      const createMemory = await User.findOneAndUpdate({ username: usernameTemp },
+
         {
+          
           $addToSet: {
-            memories: { title, description },
+            memories: memory,
           },
         })
       return createMemory
     },
     
-    addQuestion: async (parent, { questionData: { title, answer } }, { MemoryID }) => {
-      if (!MemoryID) {
+    addQuestion: async (parent, { questionData: { title, answer } }, { user }) => {
+
+      var usernameTemp = user.username
+
+      if (!usernameTemp) {
         throw new AuthenticationError("MemoryID not found.");
       }
-      const createMemory = User.findOneAndUpdate({ MemoryID },
-        
+      // const createMemory = User.findOneAndUpdate({ usernameTemp },
+      const question = await Question.create({ title, description })
+      question.save();
+      const createQuestion = await User.findOneAndUpdate({ username: usernameTemp },
+ 
+
         {
           $addToSet: {
             savedQuestion: { title, answer },
