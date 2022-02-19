@@ -11,9 +11,6 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Container from "./components/MainContainer"
-import DailyActivites from './components/DailyActivities/DailyActivites.jsx'
-// import CreateMemory from './components/CreateMemory/CreateMemory'
-// import DashboardComponent from './components/Dashboard/Dashboard'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,6 +32,11 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+
+
+
+
 
 function App() {
   return (
