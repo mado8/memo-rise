@@ -11,16 +11,16 @@ const typeDefs = gql`
   }
 
   type Memory {
-    MemoryID: ID
+    _id: ID
     title: String!
     description: String
     user: User,
-    savedQuestion: [Question]!
+    questions: [Question]!
   }
 
   type Question {
-    questionID: ID!
-    title: String!
+    _id: ID!
+    question: String!
     answer: String!
   }
 
@@ -47,7 +47,7 @@ const typeDefs = gql`
   }
   
   input QuestionInput {
-    title: String!
+    question: String!
     answer: String!
   }
   
@@ -57,7 +57,7 @@ const typeDefs = gql`
     addUser(userData: UserInput): Auth
     addMemory(memoryData: MemoryInput): Memory!
     removeMemory(memoryID: ID!): User!
-    addQuestion(questionData: QuestionInput): User!
+    addQuestion(questionData: QuestionInput, memoryID: ID!): Memory!
     login(username: String!, password: String!): Auth
   }
 `
