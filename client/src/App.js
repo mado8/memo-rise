@@ -1,5 +1,7 @@
 import React from 'react'
 // import Container from "./components/MainContainer"
+
+
 // import DashboardComponent from './components/Dashboard/Dashboard';
 import {
   ApolloClient,
@@ -9,6 +11,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 import Container from "./components/MainContainer"
 
@@ -40,11 +43,21 @@ const client = new ApolloClient({
 
 function App() {
   return (
+
+    <div>
+
+      <DailyActivites/>
+      {/* < Container/> */}
+      {/* <CreateMemory /> */}
+    
+   </div>
+
     <ApolloProvider client={client}>
       <div>
         < Container/>    
       </div>
     </ApolloProvider>
+
   )
 }
 
