@@ -12,7 +12,7 @@ const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ username: '', password: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [login, { error }] = useMutation(LOGIN_USER);
+    const [login, { error, data }] = useMutation(LOGIN_USER);
 
     useEffect(() => {
         error ? setShowAlert(true) : setShowAlert(false);
@@ -34,7 +34,12 @@ const LoginForm = () => {
         //     });
 
         try {
-            const response = await login(userFormData);
+            console.log(userFormData)
+
+            // const response = await login({userFormData.username, userFormData.password});
+            // const { data } = await login({ variables: { ...userFormData }}
+            const response = await login({ variables: { ...userFormData }});
+
 
             if (!response.ok) {
                 throw new Error('something went wrong!');
@@ -44,13 +49,13 @@ const LoginForm = () => {
             console.log(user);
             Auth.login(token);
         } catch (err) {
-            console.error(err);
+            console.log(err);
             setShowAlert(true);
         }
 
         setUserFormData({
             username: '',
-            email: '',
+            // email: '',
             password: '',
         });
     };
@@ -59,7 +64,7 @@ const LoginForm = () => {
 
     return (
         <div>
-            <form noValidate validated={validated} onSubmit={handleFormSubmit}>
+            <form validated={`${validated}`} onSubmit={handleFormSubmit}>
                 <div>
                     <label>
                         <input name='username' type='text' placeholder='Username'
