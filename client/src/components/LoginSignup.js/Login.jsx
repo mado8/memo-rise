@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { LOGIN_USER } from '../../utils/mutation';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
+import './LoginSignup.css'
 
 // const [login, { error }] = useMutation(LOGIN_USER);
 
 import { AuthService } from '../../utils/auth'
 
 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const [userFormData, setUserFormData] = useState({ username: '', password: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [login, { error }] = useMutation(LOGIN_USER);
+    const [login, { error, data }] = useMutation(LOGIN_USER);
+    let user = "";
 
     useEffect(() => {
         error ? setShowAlert(true) : setShowAlert(false);
@@ -24,41 +26,50 @@ const LoginForm = () => {
         setUserFormData({ ...userFormData, [name]: value });
     };
 
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async (event, props) => {
         event.preventDefault();
-
-        // check if form has everything (as per react-bootstrap docs)
-        // try {
-        //     const { data } = await login({
-        //       variables: { ...userFormData },
-        //     });
 
         try {
             const response = await login({variables: { ...userFormData }});
 
-            if (!response.ok) {
+            // console.log('login form: line 34')
+            // console.log(response.data.login.user.username)
+            // console.log(response.data.login.token)
+
+            user = response.data.login.user.username;
+            const token = response.data.login.token;
+
+            if (!user) {
                 throw new Error('something went wrong!');
             }
 
-            const { token, user } = await response.json();
-            console.log(user);
             Auth.login(token);
+
         } catch (err) {
-            console.error(err);
+            console.log(err);
             setShowAlert(true);
         }
 
         setUserFormData({
             username: '',
-            email: '',
+            // email: '',
             password: '',
         });
     };
 
+    // if(user !== "") {
+    //   props.setRenderForm("dashboard")
+    //   console.log(props.renderForm)
+    // }
 
-
-    return (
-        <>
+    const renderPage = () => {
+      if (props.renderForm === "dashboard") {
+        return (
+          <p>Dashboard goes here</p>
+        )
+      } else if(props.renderForm === "login") {
+        return (
+          <>
           <div>
             <div id='login-form-container'>
               <form id='login-form' noValidate validated={validated} onSubmit={handleFormSubmit}>
@@ -77,14 +88,6 @@ const LoginForm = () => {
                         onChange={handleInputChange}
                         value={userFormData.username}
                         required
-                      />
-                    </label>
-                    <label>
-                      <input
-                        className='form-input'
-                        name='email'
-                        type='email'
-                        placeholder='Email'
                       />
                     </label>
                     <label>
@@ -124,6 +127,14 @@ const LoginForm = () => {
             </svg>
           </div>
           <div id='orange-section'></div>
+        </>
+        )
+      }
+    }
+
+    return (
+        <>
+          {renderPage()}
         </>
       );
 };
