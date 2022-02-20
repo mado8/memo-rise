@@ -1,6 +1,4 @@
 import React from 'react';
-import CreateMemory from './CreateMemory/CreateMemory';
-import DashboardComponent from './Dashboard/Dashboard';
 import Home from './Home/home'
 
 
@@ -9,8 +7,7 @@ import Home from './Home/home'
 const MainContainter = () => {
     return (
         <div>
-            {/* <CreateMemory></CreateMemory> */}
-            {/* <DashboardComponent></DashboardComponent> */}
+            <Home/>
         </div>
     )
 }
