@@ -7,7 +7,7 @@ import Home from './Home/home'
 const MainContainter = () => {
     return (
         <div>
-            <Home />
+            <Home/>
         </div>
     )
 }

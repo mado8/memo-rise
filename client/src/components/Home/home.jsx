@@ -16,9 +16,13 @@ const AppHome = () => {
       )
     } else if (renderForm === "login") {
       return (
-        <Login></Login>
+        <Login renderForm={renderForm} setRenderForm={setRenderForm}/>
       )
-    } else {
+    } else if (renderForm === "dashboard") {
+      return (
+        <p>Dashboard component goes here</p>
+      )
+    } else if(renderForm === "home") {
       return (
         <div id="app-home-container">
           <div id='home-container'>

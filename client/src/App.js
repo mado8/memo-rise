@@ -41,15 +41,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-    <div>
-      
-
-      {/* <DashboardComponent/> */}
-      < Container/>
-      {/* <CreateMemory /> */}
-    
+      <div>
+        < Container/>    
       </div>
-      </ApolloProvider>
+    </ApolloProvider>
   )
 }
 
