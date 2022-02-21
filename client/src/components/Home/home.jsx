@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Login from '../LoginSignup.js/Login'
+import Login from '../LoginSignup/Login'
 import './home.css'
 
 const AppHome = () => {
