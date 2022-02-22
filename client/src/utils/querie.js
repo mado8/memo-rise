@@ -1,38 +1,99 @@
 import { gql } from '@apollo/client';
 
-
-
-export const QUERY_USER = gql`
-  query User {
-    user {
+export const GET_ME = gql`
+ {
+    me {
       _id
       username
-      memoryCount
       email
-      memories
-    }
-  }
-`;
-
-export const QUERY_MEMORY = gql`
-  query memory {
-    memory {
-      MemoryID
-      title
-      description
-      user
-      savedQuestion
+      bookCount
+      savedBooks{
+        bookId
+        authors
+        image
+        description
+        title
+        link
+      }
     }
   }
 `;
 
 
-export const QUERY_QUESTION = gql`
-  query Question {
-    question {
-      questionID
-      title
-      answer
-    }
-  }
-`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { gql } from '@apollo/client';
+
+
+
+// export const QUERY_USER = gql`
+//   query User {
+//     user {
+//       _id
+//       username
+//       memoryCount
+//       email
+//       memories
+//     }
+//   }
+// `;
+
+// export const QUERY_MEMORY = gql`
+//   query memory {
+//     memory {
+//       MemoryID
+//       title
+//       description
+//       user
+//       questions
+//     }
+//   }
+// `;
+
+
+// export const QUERY_QUESTION = gql`
+//   query Question {
+//     question {
+//       questionID
+//       title
+//       answer
+//     }
+//   }
+// `;
