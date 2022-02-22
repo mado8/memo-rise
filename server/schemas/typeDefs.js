@@ -5,7 +5,6 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String!
-    memoryCount: Int
     email: String
     memories: [Memory]!
   }
@@ -31,7 +30,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    me: User
+    user: User
   } 
   
 

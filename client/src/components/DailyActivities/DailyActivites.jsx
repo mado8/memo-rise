@@ -8,9 +8,13 @@ import { useMutation, useQuery } from '@apollo/client';
 // import Auth from '../utils/auth';
 // const [getME, { error }] = useQuery(GET_ME);
 
-
-
 const DailyActivites = () => {
+  const {loading, data} = useQuery(GET_ME);
+  const userData = data?.me || {};
+
+  console.log(userData)
+
+  
   const [addQuestion] = useMutation(ADD_QUESTION);
   const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -89,10 +93,7 @@ const DailyActivites = () => {
       </div>
     </div>
         <div className='question'>
-          Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
+         {questions[currentQuestion].question}
         </div>
         <div className='answerbox'>
           <input 
