@@ -3,6 +3,7 @@ import { LOGIN_USER } from '../../utils/mutation';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import './LoginSignup.css'
+import { withRouter } from 'react-router-dom';
 
 // const [login, { error }] = useMutation(LOGIN_USER);
 
@@ -10,66 +11,68 @@ import { AuthService } from '../../utils/auth'
 
 
 const LoginForm = (props) => {
-    const [userFormData, setUserFormData] = useState({ username: '', password: '' });
-    const [validated] = useState(false);
-    const [showAlert, setShowAlert] = useState(false);
-    const [login, { error, data }] = useMutation(LOGIN_USER);
-    let user = "";
+  const [userFormData, setUserFormData] = useState({ username: '', password: '' });
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+  let user = "";
 
-    useEffect(() => {
-        error ? setShowAlert(true) : setShowAlert(false);
-    }, [error]);
+  useEffect(() => {
+    error ? setShowAlert(true) : setShowAlert(false);
+  }, [error]);
 
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setUserFormData({ ...userFormData, [name]: value });
-    };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
 
-    const handleFormSubmit = async (event, props) => {
-        event.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-        try {
-            const response = await login({variables: { ...userFormData }});
+    try {
+      const response = await login({ variables: { ...userFormData } });
 
-            // console.log('login form: line 34')
-            // console.log(response.data.login.user.username)
-            // console.log(response.data.login.token)
+      // console.log('login form: line 34')
+      // console.log(response.data.login.user.username)
+      // console.log(response.data.login.token)
+      // 
+      user = response.data.login.user.username;
+      const token = response.data.login.token;
 
-            user = response.data.login.user.username;
-            const token = response.data.login.token;
+      if (!user) {
+        throw new Error('something went wrong!');
+      }
 
-            if (!user) {
-                throw new Error('something went wrong!');
-            }
+      Auth.login(token);
 
-            Auth.login(token);
+      props.history.push('/container');
 
-        } catch (err) {
-            console.log(err);
-            setShowAlert(true);
-        }
+    } catch (err) {
+      console.log(err);
+      setShowAlert(true);
+    }
 
-        setUserFormData({
-            username: '',
-            // email: '',
-            password: '',
-        });
-    };
+    setUserFormData({
+      username: '',
+      // email: '',
+      password: '',
+    });
+  };
 
-    // if(user !== "") {
-    //   props.setRenderForm("dashboard")
-    //   console.log(props.renderForm)
-    // }
+  // if(user !== "") {
+  //   props.setRenderForm("dashboard")
+  //   console.log(props.renderForm)
+  // }
 
-    const renderPage = () => {
-      if (props.renderForm === "dashboard") {
-        return (
-          <p>Dashboard goes here</p>
-        )
-      } else if(props.renderForm === "login") {
-        return (
-          <>
+  const renderPage = () => {
+    if (props.renderForm === "dashboard") {
+      return (
+        <p>Dashboard goes here</p>
+      )
+    } else if (props.renderForm === "login") {
+      return (
+        <>
           <div>
             <div id='login-form-container'>
               <form id='login-form' noValidate validated={validated} onSubmit={handleFormSubmit}>
@@ -128,18 +131,18 @@ const LoginForm = (props) => {
           </div>
           <div id='orange-section'></div>
         </>
-        )
-      }
+      )
     }
+  }
 
-    return (
-        <>
-          {renderPage()}
-        </>
-      );
+  return (
+    <>
+      {renderPage()}
+    </>
+  );
 };
 
-export default LoginForm
+export default withRouter(LoginForm)
 
 
 

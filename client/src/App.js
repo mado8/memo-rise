@@ -1,5 +1,8 @@
 import React from 'react'
-// import Container from "./components/MainContainer"
+import Container from "./components/MainContainer"
+
+import Home from './components/Home/home'
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 // import DashboardComponent from './components/Dashboard/Dashboard';
@@ -10,10 +13,9 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
 
-import Container from "./components/MainContainer"
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -43,19 +45,36 @@ const client = new ApolloClient({
 
 function App() {
   return (
-
-    <div>
-
-      <DailyActivites/>
-      {/* < Container/> */}
-      {/* <CreateMemory /> */}
-    
-   </div>
-
     <ApolloProvider client={client}>
       <div>
-        < Container/>    
+        <Router>
+          <Switch>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/container">
+              <Container />
+            </Route>
+
+            <Route>
+              Does not match anything
+            </Route>
+            {
+              sessionStorage.authtoken == null &&
+              <Redirect to="/login" />
+            }
+          </Switch>
+        </Router>
       </div>
+
+
+      {/* <DailyActivites/> */}
+
+      {/* <CreateMemory /> */}
     </ApolloProvider>
 
   )
