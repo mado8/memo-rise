@@ -8,12 +8,18 @@ const resolvers = {
       console.log(context.user, "this is test")
       console.log(context)
       if (context.user) {
-
+        
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("Must be logged in");
 
     },
+    // memories: async (parent, args, context) =>{
+    //   console.log(context.user, "test")
+    //   if(context.user){
+    //     return await Memory.findOne({})
+    //   }
+    // }
     // allResults: async () => {
       
     //   return User.find({}).populate('memories').populate({

@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from "./components/MainContainer"
-
+import DailyActivities from './components/DailyActivities/DailyActivites';
 import Home from './components/Home/home'
 import Dashboard from './components/Dashboard/Dashboard';
 import Activity from './components/DailyActivities/DailyActivites'
@@ -63,12 +63,21 @@ function App() {
               <Dashboard />
             </Route>
 
+
             <Route path="/new-memory">
 
             </Route>
             <Route path="/activity">
               <DailyActivites/>
             </Route>
+
+            <Route path="/container">
+              <Container />
+            </Route>
+            <Route path="/activity">
+                <DailyActivities />
+              </Route>
+
             {
               sessionStorage.authtoken == null &&
               <Redirect to="/" />
