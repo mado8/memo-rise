@@ -32,7 +32,7 @@ const SignupForm = () => {
 
     try {
       console.log(userFormData)
-      const { data } = await createUser({variables: { ...userFormData }});
+      const { data } = await createUser({variables: {userData: userFormData }});
 
       console.log(data)
       const token = data.createUser.token
@@ -58,7 +58,7 @@ const SignupForm = () => {
           <form id='login-form' noValidate validated={validated} onSubmit={handleFormSubmit}>
             <div id='form-container'>
               <div id='form-header'>
-                <h3>Login</h3>
+                <h3>Sign Up!</h3>
               </div>
               <div id="form-input-container">
                 <label>
@@ -79,7 +79,7 @@ const SignupForm = () => {
                     name='email'
                     type='text'
                     placeholder='Email'
-                    name='username' type='text' placeholder='Username'
+                    name='email' type='text' placeholder='Email'
                     onChange={handleInputChange}
                     value={userFormData.email}
                     required
