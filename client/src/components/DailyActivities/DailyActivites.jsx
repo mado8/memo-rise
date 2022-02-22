@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './DailyActivites.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-
 import { GET_ME } from '../../utils/querie';
 import { ADD_QUESTION } from '../../utils/mutation'
 import { useMutation, useQuery } from '@apollo/client';
@@ -12,10 +11,7 @@ import { useMutation, useQuery } from '@apollo/client';
 const DailyActivites = () => {
   const {loading, data} = useQuery(GET_ME);
   const userData = data?.me || {};
-
   console.log(userData)
-
-  
   const [addQuestion] = useMutation(ADD_QUESTION);
   const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -64,18 +60,6 @@ const DailyActivites = () => {
     }
   }
 
-
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_ME } from '../../utils/querie';
-
-
-// import components into main container and conditionally render them.
-// import Auth from '../utils/auth';
-const DailyActivities = () => {
-  const {data, loading} = useQuery(GET_ME);
-  const userData= data?.me || {};
-  console.log(userData)
-
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
@@ -87,9 +71,6 @@ const DailyActivities = () => {
       </div>
     );
   };
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
 
   return (
     <div id='activity-container'>
@@ -128,7 +109,6 @@ const DailyActivities = () => {
       </div>
   )
 }
-export default DailyActivities
 
 
 
@@ -147,3 +127,7 @@ export default DailyActivities
 // once timer is expired submit user Input
 // once timer is expired render success page/message
 // Pop user memories
+
+
+
+export default DailyActivites;
