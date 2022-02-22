@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Login from '../LoginSignup/Login'
+import Login from '../LoginSignup/Login';
+import Signup from '../LoginSignup/Signup';
 import './home.css'
 
 const AppHome = () => {
@@ -12,7 +13,7 @@ const AppHome = () => {
   const renderPage = () => {
     if (renderForm === "signup") {
       return (
-        <h1>sign up page here</h1>
+        <Signup renderFormHandler={renderFormHandler}></Signup>
       )
     } else if (renderForm === "login") {
       return (
