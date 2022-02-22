@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../util/dateFormat');
 
 
 const memorySchema = new Schema({
@@ -17,7 +18,8 @@ const memorySchema = new Schema({
     created_at: {
         type: Date,
         required: true,
-        default: Date.now
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
     },
     // questions: [questionSchema]
     questions: [
