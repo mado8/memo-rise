@@ -2,9 +2,13 @@ import React from 'react'
 import './dashboard.css'
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
+import { withRouter } from 'react-router-dom';
+
 
 function DashboardComponent() {
+    
     const [pageChange, setPageChange] = useState('dashboard')
+    
 
     const handlePageChange = (page) => {
         setPageChange(page)

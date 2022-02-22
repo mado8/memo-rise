@@ -36,7 +36,7 @@ const LoginForm = (props) => {
       // console.log('login form: line 34')
       // console.log(response.data.login.user.username)
       // console.log(response.data.login.token)
-
+      // 
       user = response.data.login.user.username;
       const token = response.data.login.token;
 

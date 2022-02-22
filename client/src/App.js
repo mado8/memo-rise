@@ -47,33 +47,33 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-      <Router>
-            <Switch>
-                <Route exact path="/home">
-                    <Home />
-                </Route>
+        <Router>
+          <Switch>
+            <Route exact path="/home">
+              <Home />
+            </Route>
 
-                <Route path="/dashboard">
-                    <Dashboard />
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/container">
-                    <Container />
+              <Container />
             </Route>
 
-                <Route>
-                    Does not match anything
-                </Route>
-                {
-                    sessionStorage.authtoken == null &&
-                    <Redirect to="/login" />
-                }
-            </Switch>
-        </Router>    
+            <Route>
+              Does not match anything
+            </Route>
+            {
+              sessionStorage.authtoken == null &&
+              <Redirect to="/login" />
+            }
+          </Switch>
+        </Router>
       </div>
-      
+
 
       {/* <DailyActivites/> */}
-      
+
       {/* <CreateMemory /> */}
     </ApolloProvider>
 
