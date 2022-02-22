@@ -10,3 +10,18 @@
     display:block;
     margin:0 auto;
 }
+
+#nav-list {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#nav-list li {
+    list-style: none;
+}
+
+#nav-list li a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #7e7e7e;
+}

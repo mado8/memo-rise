@@ -3,8 +3,8 @@ import Container from "./components/MainContainer"
 
 import Home from './components/Home/home'
 import Dashboard from './components/Dashboard/Dashboard';
-
-
+import Activity from './components/DailyActivities/DailyActivites'
+import Auth from './utils/auth'
 // import DashboardComponent from './components/Dashboard/Dashboard';
 import {
   ApolloClient,
@@ -14,6 +14,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import DailyActivites from './components/DailyActivities/DailyActivites';
 
 
 
@@ -49,32 +50,32 @@ function App() {
       <div>
         <Router>
           <Switch>
-            <Route exact path="/home">
-              <Home />
-            </Route>
+            
+            {/* {Auth.loggedIn() ? ( */}
+              <Route exact path='/'>
+                <Home />
+              </Route>
+            {/* ): ( */}
+              {/* <Redirect to="/dashboard"></Redirect> */}
+            {/* )} */}
 
             <Route path="/dashboard">
               <Dashboard />
             </Route>
-            <Route path="/container">
-              <Container />
-            </Route>
 
-            <Route>
-              Does not match anything
+            <Route path="/new-memory">
+
+            </Route>
+            <Route path="/activity">
+              <DailyActivites/>
             </Route>
             {
               sessionStorage.authtoken == null &&
-              <Redirect to="/login" />
+              <Redirect to="/" />
             }
           </Switch>
         </Router>
       </div>
-
-
-      {/* <DailyActivites/> */}
-
-      {/* <CreateMemory /> */}
     </ApolloProvider>
 
   )

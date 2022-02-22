@@ -14,6 +14,11 @@ const memorySchema = new Schema({
         maxlength: 280,
         trim: true
     },
+    created_at: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
     // questions: [questionSchema]
     questions: [
         {

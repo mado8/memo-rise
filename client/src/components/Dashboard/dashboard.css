@@ -63,8 +63,8 @@
   padding: 0px 25.6px;
   /* font-weight: 300; */
   font-size: 14px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color: #666666;
+  line-height: 40px;
   text-shadow: 0 1px 1px white;
   margin: 0;
   text-decoration: none;
@@ -133,6 +133,7 @@ button.button:disabled {
   padding: 50px;
   border-width: 4px;
   font-size: 18px;
+  border: none;
 }
 
 
