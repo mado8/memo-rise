@@ -1,103 +1,14 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const GET_ME = gql`
- {
-    me {
+  query {
+    user {
       _id
       username
       email
-      bookCount
-      savedBooks{
-        bookId
-        authors
-        image
-        description
-        title
-        link
+      memories {
+        _id
       }
     }
   }
-
-`;
-=======
-`;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { gql } from '@apollo/client';
-
-
-
-// export const QUERY_USER = gql`
-//   query User {
-//     user {
-//       _id
-//       username
-//       memoryCount
-//       email
-//       memories
-//     }
-//   }
-// `;
-
-// export const QUERY_MEMORY = gql`
-//   query memory {
-//     memory {
-//       MemoryID
-//       title
-//       description
-//       user
-//       questions
-//     }
-//   }
-// `;
-
-
-// export const QUERY_QUESTION = gql`
-//   query Question {
-//     question {
-//       questionID
-//       title
-//       answer
-//     }
-//   }
-// `;
-
+`
