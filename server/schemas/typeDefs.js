@@ -30,6 +30,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    # memories: Memory
     me: User
   } 
   

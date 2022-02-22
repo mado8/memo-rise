@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from "./components/MainContainer"
-
+import DailyActivities from './components/DailyActivities/DailyActivites';
 import Home from './components/Home/home'
 import Dashboard from './components/Dashboard/Dashboard';
 
@@ -59,10 +59,9 @@ function App() {
             <Route path="/container">
               <Container />
             </Route>
-
-            <Route>
-              Does not match anything
-            </Route>
+            <Route path="/activity">
+                <DailyActivities />
+              </Route>
             {
               sessionStorage.authtoken == null &&
               <Redirect to="/login" />
