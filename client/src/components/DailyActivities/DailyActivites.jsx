@@ -1,6 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import './DailyActivites.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+
+import { GET_ME } from '../../utils/querie';
+import { ADD_QUESTION } from '../../utils/mutation'
+import { useMutation, useQuery } from '@apollo/client';
+// import components into main container and conditionally render them.
+// import Auth from '../utils/auth';
+// const [getME, { error }] = useQuery(GET_ME);
+
+
+
+const DailyActivites = () => {
+  const [addQuestion] = useMutation(ADD_QUESTION);
+  const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+
+  const questions = [
+    {
+      question: "Spend some time thinking of why you wanted to remember _",
+    },
+    {
+      question: "Relate _ to something that shares similar traits.",
+    },
+    {
+      question: "Spend some time thinking of a memory that reminds you of _",
+    },
+    {
+      question: "Recall the initial time you encountered _",
+    },
+    {
+      question: "Think of a place that will require you to know _",
+    },
+    {
+      question: "Who might you know also remembers _",
+    },
+    {
+      question: "What is it you wanted to remeber?",
+    }
+  ]
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value)
+    console.log({ ...questionInput })
+    setQuestionInput({ ...questionInput, [name]: value });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      console.log("inside try")
+      setQuestionInput({...questionInput, "question": questions[currentQuestion]})
+      const response = await addQuestion({ variables: {questionData: questionInput} });
+    } catch (err) {
+      alert("catch")
+      console.log(err);
+    }
+  }
+
+
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../../utils/querie';
 
@@ -11,6 +71,7 @@ const DailyActivities = () => {
   const {data, loading} = useQuery(GET_ME);
   const userData= data?.me || {};
   console.log(userData)
+
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
@@ -25,8 +86,6 @@ const DailyActivities = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-
-
 
   return (
     <div id='activity-container'>
@@ -51,10 +110,15 @@ const DailyActivities = () => {
           {/* trying to get questions from user */}
         </h2>
         <div className='answerbox'>
-        <input placeholder='Answer Here'></input>
+          <input 
+          placeholder='Answer Here' 
+          value={questionInput.answer} 
+          onChange={handleInputChange}
+          name="answer"
+          ></input>
         </div>
         <div>
-        <button className='subbutton'>Submit</button>
+        <button className='subbutton' onClick={handleFormSubmit}>Submit</button>
         </div>
       </div>
       <div>

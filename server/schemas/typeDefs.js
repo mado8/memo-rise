@@ -15,6 +15,7 @@ const typeDefs = gql`
     title: String!
     description: String
     user: User,
+    created_at: String,
     questions: [Question]!
   }
 

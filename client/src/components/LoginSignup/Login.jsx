@@ -46,7 +46,8 @@ const LoginForm = (props) => {
 
       Auth.login(token);
 
-      props.history.push('/container');
+      // props.history.push('/container');
+      window.location.assign('/dashboard')
 
     } catch (err) {
       console.log(err);

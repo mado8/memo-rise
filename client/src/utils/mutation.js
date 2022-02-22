@@ -13,12 +13,10 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_MEMORY = gql`
-  mutation saveMemory($memoryData: MemoryInput!) {
-    saveMemory(memoryData: $memoryData) {
-      MemoryID
+  mutation addMemory($memoryData: MemoryInput) {
+    addMemory(memoryData: $memoryData) {
       title
       description
-    
       }
     }
   
@@ -43,4 +41,17 @@ export const REMOVE_MEMORY = gql`
       }
     }
   
+`;
+
+export const ADD_QUESTION = gql`
+  mutation addQuestion($questionData: QuestionInput, $memoryID:ID!) {
+    addQuestion(questionData: $questionData, memoryID: $memoryID) {
+      _id
+    	title
+    	description
+    	questions {
+        _id
+      }
+    }
+  }
 `;
