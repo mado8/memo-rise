@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client'
 // import { addUser } from '../utils/API';
 import Auth from '../../utils/auth';
 
-const SignupForm = () => {
+const SignupForm = (props) => {
   const [addUser] = useMutation(ADD_USER)
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
@@ -14,6 +14,10 @@ const SignupForm = () => {
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
+
+  const handleButton = () => {
+    props.renderFormHandler('login')
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -32,12 +36,13 @@ const SignupForm = () => {
 
     try {
       console.log(userFormData)
-      const { data } = await addUser({variables: { ...userFormData }});
+      const { data } = await addUser({variables: {userData: userFormData }});
 
       console.log(data)
       const token = data.addUser.token
 
       Auth.login(token);
+      window.location.assign('/dashboard')
 
     } catch (err) {
       console.error(err);
@@ -58,7 +63,7 @@ const SignupForm = () => {
           <form id='login-form' noValidate validated={validated} onSubmit={handleFormSubmit}>
             <div id='form-container'>
               <div id='form-header'>
-                <h3>Login</h3>
+                <h3>Sign Up!</h3>
               </div>
               <div id="form-input-container">
                 <label>
@@ -79,7 +84,7 @@ const SignupForm = () => {
                     name='email'
                     type='text'
                     placeholder='Email'
-                    name='username' type='text' placeholder='Username'
+                    name='email' type='text' placeholder='Email'
                     onChange={handleInputChange}
                     value={userFormData.email}
                     required
@@ -100,10 +105,10 @@ const SignupForm = () => {
               </div>
               <div id="form-buttons">
                 <button id='login-submit' type='submit'>
-                  Login
+                  Signup
                 </button>
                 <div>
-                  <button id='signup'>Signup</button>
+                  <button id='signup' onClick={handleButton}>Login</button>
                 </div>
               </div>
             </div>

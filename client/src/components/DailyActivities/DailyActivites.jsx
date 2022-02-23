@@ -11,10 +11,14 @@ import { useMutation, useQuery } from '@apollo/client';
 const DailyActivites = () => {
   const {loading, data} = useQuery(GET_ME);
   const userData = data?.user || {};
-  console.log(userData)
+  console.log(userData.memories)
   const [addQuestion] = useMutation(ADD_QUESTION);
   const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  // const getUserMemories = () => {
+
+  // }
 
   const questions = [
     {

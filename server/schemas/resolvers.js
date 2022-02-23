@@ -14,23 +14,14 @@ const resolvers = {
       throw new AuthenticationError("Must be logged in");
 
     },
-    // memories: async (parent, args, context) =>{
-    //   console.log(context.user, "test")
-    //   if(context.user){
-    //     return await Memory.findOne({})
-    //   }
-    // }
-    // allResults: async () => {
-      
-    //   return User.find({}).populate('memories').populate({
-    //     path: 'memories',
-    //     populate: 'questions'
-    //   });
-    // },
-
-    // }
-
-    
+    memory: async (parent, { _id }, context) =>{
+      console.log(_id)
+      console.log(context.user, "test")
+      if(!context.user){
+        throw new AuthenticationError('Must be logged in! <3')
+      }
+      return await Memory.findOne({_id: _id});
+    },
   },
   Mutation: {
     addUser: async (parent, { userData: {username,email,password} }, context) => {
