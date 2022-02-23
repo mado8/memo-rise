@@ -7,6 +7,7 @@ const typeDefs = gql`
     username: String!
     email: String
     memories: [Memory]!
+    questions:[Question]!
   }
 
   type Memory {
@@ -32,6 +33,8 @@ const typeDefs = gql`
   type Query {
     user: User
     memory(_id: ID): Memory
+    myQuestion: [Question]
+    
   } 
   
 
@@ -46,6 +49,7 @@ const typeDefs = gql`
     title: String!
     description: String
   }
+  
   
   input QuestionInput {
     question: String!

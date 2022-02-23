@@ -6,8 +6,13 @@ export const GET_ME = gql`
       _id
       username
       email
+      
       memories {
         _id
+        
+      }
+      questions {
+        question
       }
     }
   }

@@ -43,15 +43,27 @@ export const REMOVE_MEMORY = gql`
   
 `;
 
+// export const ADD_QUESTION = gql`
+//   mutation addQuestion($questionData: QuestionInput, $memoryID:ID!) {
+//     addQuestion(questionData: $questionData, memoryID: $memoryID) {
+//       _id
+//     	title
+//     	description
+//     	questions {
+//         _id
+//       }
+//     }
+//   }
+// `;
 export const ADD_QUESTION = gql`
-  mutation addQuestion($questionData: QuestionInput, $memoryID:ID!) {
-    addQuestion(questionData: $questionData, memoryID: $memoryID) {
+mutation addQuestion($questionData: QuestionInput, $memoryID: ID!) {
+  addQuestion(questionData: $questionData, memoryID: $memoryID) {
+    _id
+    title
+    description
+    questions {
       _id
-    	title
-    	description
-    	questions {
-        _id
-      }
     }
   }
+}
 `;

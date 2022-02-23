@@ -8,8 +8,16 @@ import { useMutation, useQuery } from '@apollo/client';
 // import Auth from '../utils/auth';
 // const [getME, { error }] = useQuery(GET_ME);
 
+// want to return all our memories
+// want to a timer to change each question everyday since its created for 7 days
+// my memories will queue up the next set up question from where it last stopped off
+//  we have createdAT() in db we want to only render memories that are less than 7 days
+// get my memories to load for myMemories
+// want to go to next memorie when user submits
+// m
+
 const DailyActivites = () => {
-  const {loading, data} = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
   const userData = data?.user || {};
   console.log(userData.memories)
   const [addQuestion] = useMutation(ADD_QUESTION);
@@ -19,6 +27,12 @@ const DailyActivites = () => {
   // const getUserMemories = () => {
 
   // }
+  useEffect(() => {
+    console.log(data
+    )
+
+
+  }, [data])
 
   const questions = [
     {
@@ -56,8 +70,8 @@ const DailyActivites = () => {
 
     try {
       console.log("inside try")
-      setQuestionInput({...questionInput, "question": questions[currentQuestion]})
-      const response = await addQuestion({ variables: {questionData: questionInput} });
+      setQuestionInput({ ...questionInput, "question": questions[currentQuestion] })
+      const response = await addQuestion({ variables: { questionData: questionInput } });
     } catch (err) {
       alert("catch")
       console.log(err);
@@ -68,7 +82,7 @@ const DailyActivites = () => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
     }
-  
+
     return (
       <div className="timer">
         <div className="value">{remainingTime}</div>
@@ -81,36 +95,36 @@ const DailyActivites = () => {
       <div>
         <h1 className='title'> Daily Activities</h1>
         <div className="App">
-      <div className="timer-wrapper">
-        <CountdownCircleTimer
-          isPlaying
-          duration={120}
-          colors={["#F09B41", "#F7B801", "#A30000", "#A30000"]}
-          colorsTime={[120, 90, 60, 0]}
-          onComplete={() => ({ shouldRepeat: true, delay: 1 })}
-        >
-          {renderTime}
-        </CountdownCircleTimer>
-      </div>
-    </div>
+          <div className="timer-wrapper">
+            <CountdownCircleTimer
+              isPlaying
+              duration={120}
+              colors={["#F09B41", "#F7B801", "#A30000", "#A30000"]}
+              colorsTime={[120, 90, 60, 0]}
+              onComplete={() => ({ shouldRepeat: true, delay: 1 })}
+            >
+              {renderTime}
+            </CountdownCircleTimer>
+          </div>
+        </div>
         <div className='question'>
-         {questions[currentQuestion].question}
+          {questions[currentQuestion].question}
         </div>
         <div className='answerbox'>
-          <input 
-          placeholder='Answer Here' 
-          value={questionInput.answer} 
-          onChange={handleInputChange}
-          name="answer"
+          <input
+            placeholder='Answer Here'
+            value={questionInput.answer}
+            onChange={handleInputChange}
+            name="answer"
           ></input>
         </div>
         <div>
-        <button className='subbutton' onClick={handleFormSubmit}>Submit</button>
+          <button className='subbutton' onClick={handleFormSubmit}>Submit</button>
         </div>
       </div>
       <div>
       </div>
-      </div>
+    </div>
   )
 }
 

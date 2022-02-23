@@ -76,7 +76,11 @@ const resolvers = {
       const createQuestion = await Memory.findByIdAndUpdate(
         memoryID,
         { $addToSet: { questions: questionData._id}}
-        )
+      ).populate("memories")
+
+      const userStuff = await User.findByIdAndUpdate(user._id,
+        { $addToSet: { memories: memoryID}}
+      )
 
       return createQuestion;
     },

@@ -27,6 +27,12 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Memory'
         }
+    ],
+    questions: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Question'
+        }
     ]
 });
 userSchema.pre('save', async function (next) {
