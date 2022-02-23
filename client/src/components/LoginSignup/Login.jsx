@@ -98,7 +98,7 @@ const LoginForm = (props) => {
                         name='password'
                         type='text'
                         placeholder='Password'
-                        name='password' type='text' placeholder='Password'
+                        name='password' type='password' placeholder='Password'
                         onChange={handleInputChange}
                         value={userFormData.password}
                         required
