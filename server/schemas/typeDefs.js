@@ -31,6 +31,7 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    memory(_id: ID): Memory
   } 
   
 

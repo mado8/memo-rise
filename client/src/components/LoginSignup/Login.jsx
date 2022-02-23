@@ -21,6 +21,9 @@ const LoginForm = (props) => {
     error ? setShowAlert(true) : setShowAlert(false);
   }, [error]);
 
+  const handleButton = () => {
+    props.renderFormHandler('signup')
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -67,11 +70,6 @@ const LoginForm = (props) => {
   // }
 
   const renderPage = () => {
-    if (props.renderForm === "dashboard") {
-      return (
-        <p>Dashboard goes here</p>
-      )
-    } else if (props.renderForm === "login") {
       return (
         <>
           <div>
@@ -112,7 +110,7 @@ const LoginForm = (props) => {
                       Login
                     </button>
                     <div>
-                      <button id='signup'>Signup</button>
+                      <button id='signup' onClick={handleButton}>Signup</button>
                     </div>
                   </div>
                 </div>
@@ -133,7 +131,6 @@ const LoginForm = (props) => {
           <div id='orange-section'></div>
         </>
       )
-    }
   }
 
   return (

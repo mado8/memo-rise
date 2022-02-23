@@ -3,17 +3,21 @@ import { Form, Button, Alert } from 'react-bootstrap';
 
 import { ADD_USER } from '../../utils/mutation'
 import { useMutation } from '@apollo/client'
-// import { createUser } from '../utils/API';
+// import { addUser } from '../utils/API';
 import Auth from '../../utils/auth';
 
-const SignupForm = () => {
-  const [createUser] = useMutation(ADD_USER)
+const SignupForm = (props) => {
+  const [addUser] = useMutation(ADD_USER)
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
+
+  const handleButton = () => {
+    props.renderFormHandler('login')
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -32,12 +36,13 @@ const SignupForm = () => {
 
     try {
       console.log(userFormData)
-      const { data } = await createUser({variables: {userData: userFormData }});
+      const { data } = await addUser({variables: {userData: userFormData }});
 
       console.log(data)
-      const token = data.createUser.token
+      const token = data.addUser.token
 
       Auth.login(token);
+      window.location.assign('/dashboard')
 
     } catch (err) {
       console.error(err);
@@ -100,10 +105,10 @@ const SignupForm = () => {
               </div>
               <div id="form-buttons">
                 <button id='login-submit' type='submit'>
-                  Login
+                  Signup
                 </button>
                 <div>
-                  <button id='signup'>Signup</button>
+                  <button id='signup' onClick={handleButton}>Login</button>
                 </div>
               </div>
             </div>

@@ -17,7 +17,7 @@ const AppHome = () => {
       )
     } else if (renderForm === "login") {
       return (
-        <Login renderForm={renderForm} setRenderForm={setRenderForm}/>
+        <Login renderFormHandler={renderFormHandler}/>
       )
     } else if (renderForm === "dashboard") {
       return (

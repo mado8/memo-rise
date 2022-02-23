@@ -12,3 +12,12 @@ export const GET_ME = gql`
     }
   }
 `
+
+export const GET_MEMORY = gql`
+  query ($_id: ID) {
+    memory (_id: $_id){
+      title
+      description
+    }
+  }
+`
