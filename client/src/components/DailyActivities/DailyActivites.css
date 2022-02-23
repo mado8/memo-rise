@@ -1,32 +1,50 @@
 #activity-container{
-    background-color: #FFDCA1;
+    background-color: #F09B41;
     height: 100%;
     width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    max-height: fit-content;
 }
 
-.title{
-    display: flex;
-    justify-content: center;
+.title, 
+#small-title{
+    position: relative;
+    top: 20px;
+    margin: 0px;
+    margin-left: 30px;
+    padding: 0px;
+    color: #fff;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .timer-wrapper{
     display: flex;
     justify-content: center;
     font-size: 50px;
+    margin-top: 8vh;
+    margin-bottom: 5vh;
 }
 
 .circle{
     display: flex;
     justify-content: center;
     margin-left: 43%;
-    background-color: #F09B41;
+    background-color: #d8d8d8;
     border-radius: 50%;
     height: 250px;
     width: 250px;
+}
+
+.timer {
+    color: #ffa75f;
+    background-color: #fff;
+    width: 150px;
+    height: 110px;
+    padding-top: 40px;
+    border-radius: 49%;
+    text-align: center;
 }
 
 .question{
@@ -34,18 +52,34 @@
     justify-content: center;
 }
 
+.question p {
+    width: 20%;
+    text-align: center;
+    color: #fff;
+}
+
 .answerbox{
     display: flex;
     justify-content: center;
-    padding: 5%;
-    margin: 5%;
+    margin: 30px;
+}
+
+.answerbox input {
+    width: 20%;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+}
+
+#button-div {
+    justify-content: center;
+    display: flex;
 }
 
 .subbutton{
-    color: #fff;
-    background-color: #F09B41;
-    width: 100%;
-    margin-top: 30px;
+    color: #F09B41;
+    background-color: #fff;
+    width: 20%;
     padding: 10px;
     border: none;
     border-radius: 15px;
