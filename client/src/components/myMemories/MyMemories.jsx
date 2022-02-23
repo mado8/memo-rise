@@ -20,7 +20,7 @@ const MyMemories = () => {
                 )
             })
 
-            const memoryArr = memoryItems.forEach(memory => {
+            memoryItems.forEach(memory => {
                 arr.push(memory)
             })
             
