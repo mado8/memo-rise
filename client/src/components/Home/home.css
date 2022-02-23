@@ -61,54 +61,53 @@
 .orange-div {
     width: 100%;
     height: 100%;
-    padding-top: 120px;
+    padding-top: 200px;
     background-color: #F09B41;
 }
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 1000px) {
 
     #home-logo {
         margin-top: 45%;
     }
     .orange-div {
-        padding-top: 160px
+        padding-top: 210px
     }
 }
 
-@media screen and (max-width: 425px) {
-    #home-login-buttons {
-        width: 200px;
-    }
+@media screen and (max-width: 850px) {
 
-    #home-logo {
-        margin-top: 50%;
-        height: 200px;
-        width: 200px;
-    }
     .orange-div {
-        padding-top: 200px
+        padding-top: 250px
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 610px) {
+
+    .orange-div {
+        padding-top: 300px
+    }
+}
+
+@media screen and (max-width: 400px) {
     #home-login-buttons {
         width: 150px;
     }
 
     #home-logo {
-        margin-top: 90%;
+        margin-top: 100%;
         height: 150px;
         width: 150px;
     }
     .orange-div {
-        padding-top: 260px
+        padding-top: 380px;
     }
     #home-login-buttons {
         padding-top: 25%;
     }
 }
 
-@media screen and (max-width: 280px) {
+@media screen and (max-width: 300px) {
     #home-login-buttons {
         width: 150px;
     }
@@ -118,7 +117,7 @@
         width: 150px;
     }
     .orange-div {
-        padding-top: 310px
+        padding-top:410px
     }
 }
 
@@ -138,7 +137,7 @@
     }
 
     .orange-div {
-        padding-top: 400px
+        padding-top: 460px
     }
 
     #login-button,

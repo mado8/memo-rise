@@ -19,7 +19,6 @@
   border-radius: 15px;
 }
 
-
 .wave-container-2 {
   width: 100%;
   z-index: -100;
@@ -32,36 +31,17 @@
   overflow: hidden;
 }
 
-#orange-section {
-  position: relative;
-  top: 400px;
-  background-color: #F09B41;
-  width: 100%;
-  height: 120px;
-  z-index: -10;
-}
-
 .button {
-  /* -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15); */
   background-color: #eeeeee;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbfbfb), color-stop(100%, #e1e1e1));
   background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
   background: -moz-linear-gradient(top, #fbfbfb, #e1e1e1);
   background: -o-linear-gradient(top, #fbfbfb, #e1e1e1);
-  background: linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: linear-gradient(to top, #fbfbfb, #e1e1e1);
   display:flex;
   display:flex;
-  /* vertical-align: middle;
-  *vertical-align: auto; */
   zoom: 1;
-  /* *display: inline; */
   border: 1px solid #d4d4d4;
-  /* height: 32px;
-  line-height: 32px; */
   padding: 0px 25.6px;
-  /* font-weight: 300; */
   font-size: 14px;
   color: #666666;
   line-height: 40px;
@@ -73,11 +53,10 @@
 
 .button:hover {
   background-color: #eeeeee;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dcdcdc));
   background: -webkit-linear-gradient(top, #ffffff, #dcdcdc);
   background: -moz-linear-gradient(top, #ffffff, #dcdcdc);
   background: -o-linear-gradient(top, #ffffff, #dcdcdc);
-  background: linear-gradient(top, #ffffff, #dcdcdc);
+  background: linear-gradient(to top, #ffffff, #dcdcdc);
 }
 
 .button:active {
@@ -89,14 +68,10 @@
   color: #bbbbbb;
 }
 
-
 input.button, button.button {
   /* height: 34px; */
   cursor: pointer;
 }
-
-
-
 
 .button.disabled,
 .button.disabled:hover,
@@ -112,11 +87,6 @@ button.button:disabled {
   color: #CCC;
   cursor: default;
 }
-
-
-
-
-
 
 .button-circle {
   -webkit-border-radius: 240px;
@@ -136,15 +106,11 @@ button.button:disabled {
   border: none;
 }
 
-
-
-
 .button-highlight {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fa9915), color-stop(100%, #d87e04));
   background: -webkit-linear-gradient(top, #fa9915, #d87e04);
   background: -moz-linear-gradient(top, #fa9915, #d87e04);
   background: -o-linear-gradient(top, #fa9915, #d87e04);
-  background: linear-gradient(top, #fa9915, #d87e04);
+  background: linear-gradient(to top, #fa9915, #d87e04);
   background-color: #f18d05;
   border-color: #bf7004;
   color: white;
@@ -157,7 +123,7 @@ button.button:disabled {
   background: -webkit-linear-gradient(top, #fba42e, #d87e04);
   background: -moz-linear-gradient(top, #fba42e, #d87e04);
   background: -o-linear-gradient(top, #fba42e, #d87e04);
-  background: linear-gradient(top, #fba42e, #d87e04);
+  background: linear-gradient(to top, #fba42e, #d87e04);
 }
 
 .button-highlight:active {
@@ -165,42 +131,8 @@ button.button:disabled {
   color: #8d5303;
 }
 
-
-
-
-
-
-
-
-
-
-/* @media screen and (max-width: 1024px) {
-  #memory-form {
-      width: 80%;
-  }
-} */
-
 @media screen and (max-width: 768px) {
-  #orange-section {
-     height: 200px; 
-     top: 450px;
-  }
-
   #dasboard-form-container {
       height: 450px;
   }
-}
-
-@media screen and (max-width: 425px) {
-  #orange-section {
-     height: 200px; 
-  }
-
-}
-
-@media screen and (max-width: 225px) {
-  #orange-section {
-     height: 175px; 
-  }
-
 }

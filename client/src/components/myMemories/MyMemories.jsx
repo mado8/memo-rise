@@ -2,11 +2,13 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_ME, GET_MEMORY } from '../../utils/querie'
 import Memory from '../Memory/Memory'
+import './MyMemories.css'
 // need to grab user's memories and render each as a div with a image and a button
 
-const MyMemories = async () => {
-    const { data: user } = await useQuery(GET_ME);
+const MyMemories = () => {
+    const { data: user } = useQuery(GET_ME);
     const userData = user?.user || {};
+    let arr = [];
 
     const returnMemories = () => {
         const memoryIdArr = userData.memories;
@@ -18,13 +20,18 @@ const MyMemories = async () => {
                     <Memory _id={memory._id}></Memory>
                 )
             })
-            return memoryItems;
+
+            memoryItems.forEach(memory => {
+                arr.push(memory)
+            })
+            
+            return arr;
         }
     }
 
     return (
-        <div>
-            <div>
+        <div id="memory-component">
+            <div id="memory-container">
               {returnMemories()}
             </div>
         </div>
