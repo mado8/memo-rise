@@ -13,13 +13,9 @@ import { AuthService } from '../../utils/auth'
 const LoginForm = (props) => {
   const [userFormData, setUserFormData] = useState({ username: '', password: '' });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  const [showErr, setShowErr] = useState(false);
   const [login, { error, data }] = useMutation(LOGIN_USER);
   let user = "";
-
-  useEffect(() => {
-    error ? setShowAlert(true) : setShowAlert(false);
-  }, [error]);
 
   const handleButton = () => {
     props.renderFormHandler('signup')
@@ -54,7 +50,7 @@ const LoginForm = (props) => {
 
     } catch (err) {
       console.log(err);
-      setShowAlert(true);
+      setShowErr(true);
     }
 
     setUserFormData({
@@ -64,10 +60,13 @@ const LoginForm = (props) => {
     });
   };
 
-  // if(user !== "") {
-  //   props.setRenderForm("dashboard")
-  //   console.log(props.renderForm)
-  // }
+  const showError = () => {
+    if(showErr === true) {
+      return (
+        <p id="error-tag">Incorrect username or password.</p>
+      )
+    }
+  }
 
   const renderPage = () => {
       return (
@@ -80,6 +79,7 @@ const LoginForm = (props) => {
                     <h3>Login</h3>
                   </div>
                   <div id="form-input-container">
+                    {showError()}
                     <label>
                       <input
                         className='form-input'

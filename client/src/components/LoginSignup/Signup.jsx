@@ -13,7 +13,7 @@ const SignupForm = (props) => {
   // set state for form validation
   const [validated] = useState(false);
   // set state for alert
-  const [showAlert, setShowAlert] = useState(false);
+  const [showErr, setShowErr] = useState(false);
 
   const handleButton = () => {
     props.renderFormHandler('login')
@@ -46,7 +46,7 @@ const SignupForm = (props) => {
 
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      setShowErr(true);
     }
 
     setUserFormData({
@@ -55,6 +55,14 @@ const SignupForm = (props) => {
       password: '',
     });
   };
+
+  const showError = () => {
+    if(showErr === true) {
+      return (
+        <p id="error-tag">Username already in use.</p>
+      )
+    }
+  }
 
   return (
     <>
@@ -66,6 +74,7 @@ const SignupForm = (props) => {
                 <h3>Sign Up!</h3>
               </div>
               <div id="form-input-container">
+                {showError()}
                 <label>
                   <input
                     className='form-input'

@@ -47,6 +47,11 @@
     background-color: #ececec;
 }
 
+#error-tag {
+    color: #f06a41;
+    text-align: center;
+}
+
 #form-buttons {
     text-align: center;
     padding-left: 50px;
