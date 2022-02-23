@@ -1,0 +1,25 @@
+#memory-component {
+    /* background-image: url('../../assets/images/cloud.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: #365379;
+    height: 100vh;
+}
+
+#memory-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.memory-div {
+    width: 40vw;
+    height: 10vh;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #F09B41;
+}
+
+.memory-item {
+
+}

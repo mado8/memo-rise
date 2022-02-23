@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_ME, GET_MEMORY } from '../../utils/querie'
 import Memory from '../Memory/Memory'
+import './MyMemories.css'
 // need to grab user's memories and render each as a div with a image and a button
 
 const MyMemories = () => {
@@ -29,8 +30,8 @@ const MyMemories = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div id="memory-component">
+            <div id="memory-container">
               {returnMemories()}
             </div>
         </div>
