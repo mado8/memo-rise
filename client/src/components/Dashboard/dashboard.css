@@ -31,15 +31,6 @@
   overflow: hidden;
 }
 
-#orange-section {
-  position: relative;
-  top: 400px;
-  background-color: #F09B41;
-  width: 100%;
-  height: 120px;
-  z-index: -10;
-}
-
 .button {
   background-color: #eeeeee;
   background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
@@ -141,26 +132,7 @@ button.button:disabled {
 }
 
 @media screen and (max-width: 768px) {
-  #orange-section {
-     height: 200px; 
-     top: 450px;
-  }
-
   #dasboard-form-container {
       height: 450px;
   }
-}
-
-@media screen and (max-width: 425px) {
-  #orange-section {
-     height: 200px; 
-  }
-
-}
-
-@media screen and (max-width: 225px) {
-  #orange-section {
-     height: 175px; 
-  }
-
 }

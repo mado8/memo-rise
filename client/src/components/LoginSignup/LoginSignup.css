@@ -97,13 +97,19 @@
     top: 400px;
     background-color: #F09B41;
     width: 100%;
-    height: 120px;
+    height: 150px;
     z-index: -10;
 }
 
 @media screen and (max-width: 1024px) {
     #login-form {
         width: 55%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #orange-section {
+        height: 180px;
     }
 }
 
@@ -120,7 +126,7 @@
 
 @media screen and (max-width: 425px) {
     #orange-section {
-       height: 200px; 
+       height: 230px; 
     }
     #login-form {
         width: 70%;
