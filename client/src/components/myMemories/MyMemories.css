@@ -1,25 +1,32 @@
 #memory-component {
-    /* background-image: url('../../assets/images/cloud.jpg');
+    background-image: url('../../assets/images/cloud.jpg');
     background-repeat: no-repeat;
-    background-size: cover; */
-    background-color: #365379;
+    background-size: cover;
+    background-color: #66D0FF;
     height: 100vh;
 }
 
-#memory-container {
+
+.memory-container {
     width: 100vw;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
 }
-
 .memory-div {
-    width: 40vw;
-    height: 10vh;
-    padding: 20px;
+    margin-top:70px;
+    width:350px;
+    height:160px;
+    background:#ECEFF1;
+    box-shadow: 10px 10px rgba(0,0,0,0.2);
+    border-radius:100px;
+    margin: 50px auto auto;
+    padding: 10px;
     border-radius: 15px;
-    background-color: #F09B41;
 }
 
-.memory-item {
 
+h3 {
+    color:Orange;
 }
