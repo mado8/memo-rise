@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 // const CreateMemo
-import './CreateMemory.css'
+import '../components/CreateMemory/CreateMemory.css'
 import { useMutation } from '@apollo/client';
-import { ADD_MEMORY } from '../../utils/mutation';
+import { ADD_QUESTION } from '../utils/mutation';
 
 
-const CreateMemory = (props) => {
-  const [addMemory, { error, data }] = useMutation(ADD_MEMORY);
-  const [memoryInput, setmemoryInput] = useState({ title: '', description: '' });
+const AddQuestion = (props) => {
+  const [addQuestion, { error, data }] = useMutation(ADD_QUESTION)
+  const [questionInput, setquestionInput] = useState({ question: '', answer: '' });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setmemoryInput({ ...memoryInput, [name]: value });
+    setquestionInput({ ...questionInput, [name]: value });
   };
 
   const handleFormSubmit = async (event) => {
@@ -19,9 +19,8 @@ const CreateMemory = (props) => {
 
     try {
       console.log("inside try")
-      const response = await addMemory({ variables: {memoryData: memoryInput} });
-      console.log(response)
-      props.handlePageChange('dashboard')
+      const response = await addQuestion({ variables: {questionData: questionInput} });
+      props.handlePageChange('')
     } catch (err) {
       alert("catch")
       console.log("inside in memory cache block")
@@ -37,7 +36,7 @@ const CreateMemory = (props) => {
           <form id='memory-form' onSubmit={handleFormSubmit}>
             <div id='form-container'>
               <div id='form-header'>
-                <h3>Memory</h3>
+                <h3>Questions</h3>
               </div>
               <div id="form-input-container">
                 <label>
@@ -45,27 +44,27 @@ const CreateMemory = (props) => {
                     className='form-input'
                     name='title'
                     type='text'
-                    placeholder='Add a Memory'
+                    placeholder='Add a Question'
                     onChange={handleInputChange}
-                    value={memoryInput.name}
+                    value={questionInput.question}
                     required
                   />
                 </label>
                 <label>
                   <input
                     className='form-input'
-                    name='description'
+                    name='Answer'
                     type='text'
                     placeholder='Add an Answer'
                     onChange={handleInputChange}
-                    value={memoryInput.name}
+                    value={questionInput.answer}
                     required
                   />
                 </label>
               </div>
               <div id="form-buttons">
                 <button id='memory-submit' type='submit' >
-                  Submit Memory
+                  Submit Question
                 </button>
               </div>
             </div>
@@ -88,8 +87,4 @@ const CreateMemory = (props) => {
   )
 }
 
-export default CreateMemory
-
-// Insert Memory Box
-// Insert Answer box
-// CREATE_MEMORY
+export default AddQuestion
