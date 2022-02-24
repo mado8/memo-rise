@@ -12,7 +12,6 @@ const resolvers = {
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("Must be logged in");
-
     },
     memory: async (parent, { _id }, context) =>{
       console.log(_id)

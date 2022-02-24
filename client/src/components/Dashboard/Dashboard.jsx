@@ -1,11 +1,11 @@
 import React from 'react'
-import './dashboard.css'
 import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import CreateMemory from '../CreateMemory/CreateMemory'
 import MyMemories from '../myMemories/MyMemories'
 import Auth from '../../utils/auth'
 import { Redirect, Route } from 'react-router-dom'
+import './Dashboard.css'
 
 function DashboardComponent() {
     

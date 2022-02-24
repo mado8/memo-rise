@@ -1,17 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import './DailyActivites.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-import { GET_ME } from '../../utils/querie';
+import { GET_ME, GET_MEMORY } from '../../utils/querie';
 import { ADD_QUESTION } from '../../utils/mutation'
 import { useMutation, useQuery } from '@apollo/client';
+import GetMemory from '../GetMemory'
 // import components into main container and conditionally render them.
 // import Auth from '../utils/auth';
 // const [getME, { error }] = useQuery(GET_ME);
 
 const DailyActivites = () => {
-  const {loading, data} = useQuery(GET_ME);
-  const userData = data?.user || {};
-  console.log(userData)
+  const {data: user} = useQuery(GET_ME);
+  const userData = user?.user || {};
+  let arr = [];
+
+  const returnMemories = () => {
+    const memoryIdArr = userData.memories;
+    if (memoryIdArr !== undefined) {
+        console.log(memoryIdArr[0]._id)
+
+        const memoryItems = memoryIdArr.map((memory) => {
+            return (
+                <GetMemory _id={memory._id}></GetMemory>
+            )
+        })
+
+        memoryItems.forEach(memory => {
+            arr.push(memory)
+        })
+
+        return arr;
+    }
+  }
+
+  // const {data: memory} = useQuery(GET_MEMORY);
+  // const memoryData = memory?.memory || {};
+  // console.log(memoryData);
+
   const [addQuestion] = useMutation(ADD_QUESTION);
   const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -39,6 +64,8 @@ const DailyActivites = () => {
       question: "What is it you wanted to remeber?",
     }
   ]
+
+  var randomItem = questions[Math.floor(Math.random() * questions.length)];
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -90,7 +117,7 @@ const DailyActivites = () => {
       </div>
     </div>
         <div className='question'>
-         {questions[currentQuestion].question}
+         {randomItem.question}
         </div>
         <div className='answerbox'>
           <input 
