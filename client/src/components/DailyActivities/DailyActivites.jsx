@@ -1,71 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import './DailyActivites.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-import { GET_ME, GET_MEMORY } from '../../utils/querie';
+import { GET_ME } from '../../utils/querie';
 import { ADD_QUESTION } from '../../utils/mutation'
 import { useMutation, useQuery } from '@apollo/client';
 import GetMemory from '../GetMemory'
-// import components into main container and conditionally render them.
-// import Auth from '../utils/auth';
-// const [getME, { error }] = useQuery(GET_ME);
 
 const DailyActivites = () => {
   const {data: user} = useQuery(GET_ME);
   const userData = user?.user || {};
+  const memoryIdArr = userData.memories;
+  const [start, setStart] = useState(false);
   let arr = [];
+  let increment = 0;
 
-  const returnMemories = () => {
-    const memoryIdArr = userData.memories;
-    if (memoryIdArr !== undefined) {
-        console.log(memoryIdArr[0]._id)
+  const getMemory = () => {
+      if (memoryIdArr !== undefined) {
+          console.log('this data is being accessed')
+          const memoryItems = memoryIdArr.map((memory) => {
+              return (
+                  <GetMemory _id={memory._id}></GetMemory>
+              )
+          })
+          memoryItems.forEach(memory => {
+              arr.push(memory)
+          })
+      }
+  };
 
-        const memoryItems = memoryIdArr.map((memory) => {
-            return (
-                <GetMemory _id={memory._id}></GetMemory>
-            )
-        })
+  getMemory();
 
-        memoryItems.forEach(memory => {
-            arr.push(memory)
-        })
-
-        return arr;
-    }
-  }
-
-  // const {data: memory} = useQuery(GET_MEMORY);
-  // const memoryData = memory?.memory || {};
-  // console.log(memoryData);
 
   const [addQuestion] = useMutation(ADD_QUESTION);
-  const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
+  const [questionInput, setQuestionInput] = useState({ question: arr[increment], answer: '' });
   const [currentQuestion, setCurrentQuestion] = useState(0)
-
-  const questions = [
-    {
-      question: "Spend some time thinking of why you wanted to remember _",
-    },
-    {
-      question: "Relate _ to something that shares similar traits.",
-    },
-    {
-      question: "Spend some time thinking of a memory that reminds you of _",
-    },
-    {
-      question: "Recall the initial time you encountered _",
-    },
-    {
-      question: "Think of a place that will require you to know _",
-    },
-    {
-      question: "Who might you know also remembers _",
-    },
-    {
-      question: "What is it you wanted to remeber?",
-    }
-  ]
-
-  var randomItem = questions[Math.floor(Math.random() * questions.length)];
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -76,11 +44,13 @@ const DailyActivites = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    increment ++;
+    console.log(increment)
 
     try {
-      console.log("inside try")
-      setQuestionInput({...questionInput, "question": questions[currentQuestion]})
-      const response = await addQuestion({ variables: {questionData: questionInput} });
+      // console.log("inside try")
+      // setQuestionInput({...questionInput, "question": questions[currentQuestion]})
+      // const response = await addQuestion({ variables: {questionData: questionInput} });
     } catch (err) {
       alert("catch")
       console.log(err);
@@ -91,7 +61,6 @@ const DailyActivites = () => {
     if (remainingTime === 0) {
       return <div className="timer">Too late...</div>;
     }
-  
     return (
       <div className="timer">
         <div className="value">{remainingTime}</div>
@@ -116,20 +85,20 @@ const DailyActivites = () => {
         </CountdownCircleTimer>
       </div>
     </div>
-        <div className='question'>
-         {randomItem.question}
-        </div>
-        <div className='answerbox'>
-          <input 
-          placeholder='Answer Here' 
-          value={questionInput.answer} 
-          onChange={handleInputChange}
-          name="answer"
-          ></input>
-        </div>
-        <div>
-        <button className='subbutton' onClick={handleFormSubmit}>Submit</button>
-        </div>
+        {arr[increment]}
+        <form onSubmit={handleFormSubmit}>
+          <div className='answerbox'>
+            <input 
+            placeholder='Answer Here' 
+            value={questionInput.answer} 
+            onChange={handleInputChange}
+            name="answer"
+            ></input>
+          </div>
+          <div>
+            <button className='subbutton' type="submit">Submit</button>
+          </div>
+        </form>
       </div>
       <div>
       </div>
