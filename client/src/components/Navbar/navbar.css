@@ -1,4 +1,4 @@
-#logoutButton{
+/* #logoutButton{
     width: 100px;
     cursor:pointer;
     border-radius:50px;
@@ -9,9 +9,10 @@
     text-indent:40px;
     display:block;
     margin:0 auto;
-}
+} */
 
 #nav-list {
+    /* position: fixed; */
     display: flex;
     justify-content: flex-end;
 }
