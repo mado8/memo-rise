@@ -12,7 +12,7 @@ const MyMemories = () => {
 
     const returnMemories = () => {
         const memoryIdArr = userData.memories;
-        if(memoryIdArr !== undefined) {
+        if (memoryIdArr !== undefined) {
             console.log(memoryIdArr[0]._id)
 
             const memoryItems = memoryIdArr.map((memory) => {
@@ -24,15 +24,15 @@ const MyMemories = () => {
             memoryItems.forEach(memory => {
                 arr.push(memory)
             })
-            
+
             return arr;
         }
     }
 
     return (
         <div id="memory-component">
-            <div id="memory-container">
-              {returnMemories()}
+            <div class="memory-container">
+                {returnMemories()}
             </div>
         </div>
     )

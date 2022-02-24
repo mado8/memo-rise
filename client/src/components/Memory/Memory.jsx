@@ -18,7 +18,9 @@ const useMemory = ({ _id }) => {
 
   return (
     <div class="memory-div">
+      <h3> My Memory</h3>
       <p class="memory-item">{memoryTitle}</p>
+      <h3> Answer </h3>
       <p class="memory-item"> {memoryDesc}</p>
     </div>
   )
