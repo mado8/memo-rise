@@ -31,7 +31,7 @@ const MyMemories = () => {
 
     return (
         <div id="memory-component">
-            <div class="memory-container">
+            <div className="memory-container">
                 {returnMemories()}
             </div>
         </div>
