@@ -11,23 +11,19 @@ const DailyActivites = () => {
   const userData = user?.user || {};
   const memoryIdArr = userData?.memories;
   const [start, setStart] = useState(false);
-  let arr = [];
-  let increment = 0;
+  const [questions, setQuestions] = useState([]);
+  const [increment, setIncrement] = useState(0)
 
-  // useEffect(() => {
+  useEffect(() => {
     if (memoryIdArr !== undefined) {
-        console.log('this data is being accessed')
         const memoryItems = memoryIdArr.map((memory) => {
             return (
                 <GetMemory _id={memory._id}></GetMemory>
             )
         })
-        memoryItems.forEach(memory => {
-            arr.push(memory)
-        })
-        console.log(arr)
+        setQuestions(memoryItems)
     }
-  // }, [start, increment]);
+  }, [start]);
 
   const [addQuestion] = useMutation(ADD_QUESTION);
   const [questionInput, setQuestionInput] = useState({ question: '', answer: '' });
@@ -35,14 +31,13 @@ const DailyActivites = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(arr[increment])
+    console.log(questions[increment])
     setQuestionInput({ ...questionInput, answer: value });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    increment ++;
-    console.log(increment)
+    setIncrement(increment + 1);
 
     try {
       // console.log("inside try")
@@ -56,7 +51,7 @@ const DailyActivites = () => {
 
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      return <div className="timer">Too late...</div>;
+      return <>Done!</>
     }
     return (
       <div className="timer">
@@ -68,13 +63,9 @@ const DailyActivites = () => {
   const handleStart = (startInput) => {
     setStart(startInput)
   }
-
-  const renderPage = () => {
-    if(start === false) {
-      return <button onClick={() => handleStart(true)}>Start</button>
-    } else if (start === true) {
-      return (
-        <div id='activity-container'>
+  
+  return start ? (
+    <div id='activity-container'>
       <p id="small-title"> M y  ☀️  d a i l y </p>
       <h1 className='title'>Activity</h1>
       <div>
@@ -89,14 +80,14 @@ const DailyActivites = () => {
               trailColor={'#ffd2b8'}
               children={({color: "#fff"})}
               colorsTime={[120, 90, 60, 0]}
-              onComplete={() => ({ shouldRepeat: false, delay: 1 })}
+              onComplete={() => ({ shouldRepeat: true, delay: 1 })}
             >
               {renderTime}
             </CountdownCircleTimer>
           </div>
         </div>
         <div className='question'>
-          <p>{arr[increment]}</p>
+          <p>{questions[increment]}</p>
         </div>
         <div className='answerbox'>
           <input
@@ -114,35 +105,9 @@ const DailyActivites = () => {
       </div>
       <div></div>
     </div>
-      )
-    }
-  }
-
-  return (
-    <div>
-      {renderPage()}
-    </div>
+  ): (
+    <button onClick={() => handleStart(true)}>Start</button>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Button rende
-// Forum to Render for user input
-// once timer is expired submit user Input
-// once timer is expired render success page/message
-// Pop user memories
-
-
 
 export default DailyActivites;

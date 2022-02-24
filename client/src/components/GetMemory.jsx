@@ -38,7 +38,7 @@ const GetMemory = ({_id}) => {
     
       var randomItem = questions[Math.floor(Math.random() * questions.length)];
 
-    if (memory !== null) {
+    if (memory !== null && memory !== undefined) {
         console.log(memoryTitle)
         console.log(memoryDesc)
     }
