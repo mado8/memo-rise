@@ -4,6 +4,7 @@ import DailyActivities from './components/DailyActivities/DailyActivites';
 import Home from './components/Home/home'
 import Dashboard from './components/Dashboard/Dashboard';
 import Activity from './components/DailyActivities/DailyActivites'
+import Board from './components/MemoryGame/Board'
 import Auth from './utils/auth'
 // import DashboardComponent from './components/Dashboard/Dashboard';
 import {
@@ -61,6 +62,9 @@ function App() {
 
             <Route path="/dashboard">
               <Dashboard />
+            </Route>
+            <Route path="/memoryGame">
+              <Board />
             </Route>
 
 
