@@ -14,7 +14,7 @@ export default function SingleCard({ card, handleChoice, flipped, disabled }) {
                 <div className='front'>
                     <FontAwesomeIcon id="icon-div" icon={card.icon}></FontAwesomeIcon>
                 </div>
-                <div className="back" onClick={handleClick} alt="card back"></div>        
+                <div className="back" onClick={handleClick} alt="card back"></div>
             </div>
         </div>
     )
