@@ -68,13 +68,16 @@ Then I am redirected to login page
 
   <a name="picsection"></a>
   ## Screenshots
-  ![Screenshot of homepage]()
-  ![Screenshot of dashboard]()
-  ![Screenshot of ]()
+  ![Screenshot of homepage](./client/src/utils/images/01.png)
+  ![Screenshot of dashboard](./client/src/utils/images/02.png)
+  ![Screenshot of dailya activities](./client/src/utils/images/03.png)
+  ![Screenshot of my memories](./client/src/utils/images/04.png)
+   ![Screenshot of my memories](./client/src/utils/images/05.png)
+    ![Screenshot of my memories](./client/src/utils/images/06.png)
 
   <a name="linksection"></a>
   ## Links
 
-Deployed Heroku Site: 
+Deployed Heroku Site: https://memo-rise.herokuapp.com/
 
-Github Site: 
+Github Site: https://github.com/mado8/memo-rise
