@@ -4,30 +4,26 @@ const { signToken } = require('../util/auth');
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
+    user: async (parent, args, context) => {
       console.log(context.user, "this is test")
       console.log(context)
       if (context.user) {
-
+        
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("Must be logged in");
-
     },
-    // allResults: async () => {
-      
-    //   return User.find({}).populate('memories').populate({
-    //     path: 'memories',
-    //     populate: 'questions'
-    //   });
-    // },
-
-    // }
-
-    
+    memory: async (parent, { _id }, context) =>{
+      console.log(_id)
+      console.log(context.user, "test")
+      if(!context.user){
+        throw new AuthenticationError('Must be logged in! <3')
+      }
+      return await Memory.findOne({_id: _id});
+    },
   },
   Mutation: {
-    addUser: async (parent, { userData: { username, email, password } }, context) => {
+    addUser: async (parent, { userData: {username,email,password} }, context) => {
 
       const newUser = await User.create({ username, email, password });
 

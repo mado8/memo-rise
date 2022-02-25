@@ -1,38 +1,23 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
-
-
-export const QUERY_USER = gql`
-  query User {
+export const GET_ME = gql`
+  query {
     user {
       _id
       username
-      memoryCount
       email
-      memories
+      memories {
+        _id
+      }
     }
   }
-`;
+`
 
-export const QUERY_MEMORY = gql`
-  query memory {
-    memory {
-      MemoryID
+export const GET_MEMORY = gql`
+  query ($_id: ID) {
+    memory (_id: $_id){
       title
       description
-      user
-      savedQuestion
     }
   }
-`;
-
-
-export const QUERY_QUESTION = gql`
-  query Question {
-    question {
-      questionID
-      title
-      answer
-    }
-  }
-`;
+`

@@ -1,19 +1,19 @@
 [{
     "username": "myself",
-    "password": "fiuhdshf",
+    "password": "123",
     "email": "me@gmail.com",
     "memory": []
   },
   {
     "username": "samuel",
-    "password": "fiuhdshf",
+    "password": "1234",
     "email": "sam@gmail.com",
     "memory": []
   },
   
   {
     "username": "alex",
-    "password": "fiuhdshf",
+    "password": "12345",
     "email": "alex@gmail.com",
     "memory": []
   }

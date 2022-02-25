@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
-  mutation createUser($username: String!, $email: String!, $password: String!) {
-    createUser(username: $username, email: $email, password: $password) {
+  mutation addUser($userData: UserInput) {
+    addUser(userData: $userData) {
       token
       user {
         _id
@@ -13,20 +13,18 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_MEMORY = gql`
-  mutation saveMemory($memoryData: MemoryInput!) {
-    saveMemory(memoryData: $memoryData) {
-      MemoryID
+  mutation addMemory($memoryData: MemoryInput) {
+    addMemory(memoryData: $memoryData) {
       title
       description
-    
       }
     }
   
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
       user {
         _id
@@ -43,4 +41,17 @@ export const REMOVE_MEMORY = gql`
       }
     }
   
+`;
+
+export const ADD_QUESTION = gql`
+  mutation addQuestion($questionData: QuestionInput, $memoryID:ID!) {
+    addQuestion(questionData: $questionData, memoryID: $memoryID) {
+      _id
+    	title
+    	description
+    	questions {
+        _id
+      }
+    }
+  }
 `;
