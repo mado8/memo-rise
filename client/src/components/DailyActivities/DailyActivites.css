@@ -85,6 +85,53 @@
     border-radius: 15px;
 }
 
+.title, 
+#small-title{
+    position: relative;
+    top: 20px;
+    margin: 0px;
+    margin-left: 10vw;
+    padding: 0px;
+    color: #fff;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#home-arrow {
+    position: relative;
+    top: -40px;
+    margin: 0px;
+    margin-left: 88vw;
+    padding: 0px;
+}
+
+#start-button {
+    margin-top: 10vh;
+    padding: 50px;
+    padding-top: 55px;
+    padding-bottom: 55px;
+    border: none;
+    background-color: #fff;
+    color: #F09B41;
+    border-radius: 50%;
+    
+}
+
+#finished-button {
+    margin-top: 10vh;
+    padding: 50px;
+    padding-top: 95px;
+    padding-bottom: 95px;
+    border: none;
+    background-color: #fff;
+    color: #F09B41;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+#start-text {
+    margin-top: 50px;
+}
+
 @media screen and (max-width: 720px) {
     .subbutton, 
     .question p ,
