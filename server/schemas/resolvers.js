@@ -21,6 +21,14 @@ const resolvers = {
       }
       return await Memory.findOne({_id: _id});
     },
+    question: async (parent, { _id }, context) =>{
+      console.log(_id)
+      console.log(context.user, "test")
+      if(!context.user){
+        throw new AuthenticationError('Must be logged in! <3')
+      }
+      return await Question.findOne({_id: _id});
+    },
   },
   Mutation: {
     addUser: async (parent, { userData: {username,email,password} }, context) => {

@@ -21,3 +21,12 @@ export const GET_MEMORY = gql`
     }
   }
 `
+
+export const GET_QUESTION = gql`
+  query ($_id: ID) {
+    question (_id: $_id){
+      question
+      answer
+    }
+  }
+`
