@@ -38,15 +38,15 @@ const GetMemory = ({_id}) => {
     
       var randomItem = questions[Math.floor(Math.random() * questions.length)];
 
-    if (memory !== null && memory !== undefined) {
-        console.log(memoryTitle)
-        console.log(memoryDesc)
-    }
+    // if (memory !== null && memory !== undefined) {
+    //     console.log(memoryTitle)
+    //     console.log(memoryDesc)
+    // }
 
     return (
-        <div className='question'>
+        <p className='question' id="questionInput">
          {randomItem.question}
-        </div>
+        </p>
     )
 }
 
