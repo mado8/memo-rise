@@ -12,20 +12,13 @@
     "gulp": "^4.0.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.21",
-
-    "react": "^17.0.2",
+    "react": "^16.13.1",
     "react-countdown-circle-timer": "^3.0.8",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "4.0.2",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4",
-
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "4.0.2",
-    "styled-components": "^5.3.3"
-
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
