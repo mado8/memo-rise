@@ -20,7 +20,6 @@ const MyMemories = () => {
                     <Memory _id={memory._id}></Memory>
                 )
             })
-
             memoryItems.forEach(memory => {
                 arr.push(memory)
             })

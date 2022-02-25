@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import CreateMemory from '../CreateMemory/CreateMemory'
 import MyMemories from '../myMemories/MyMemories'
 import Articles from '../Article/Article'
+import MemoryGame from '../MemoryGame/Board'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBrain,
@@ -27,6 +28,8 @@ function DashboardComponent() {
       return <CreateMemory handlePageChange={handlePageChange}></CreateMemory>
     } else if (pageChange === 'articles') {
       return <Articles handlePageChange={handlePageChange}></Articles>
+    } else if (pageChange === 'games') {
+      return <MemoryGame handlePageChange={handlePageChange}></MemoryGame>
     } else {
       return (
         <div id='dashboard'>
