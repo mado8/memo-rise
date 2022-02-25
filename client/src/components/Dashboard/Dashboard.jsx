@@ -11,8 +11,6 @@ import {
   faCodeBranch,
   faBook,
 } from '@fortawesome/free-solid-svg-icons'
-import Auth from '../../utils/auth'
-import { Redirect, Route } from 'react-router-dom'
 import './Dashboard.css'
 
 function DashboardComponent() {

@@ -1,5 +1,4 @@
 #dasboard-form-container {
-  /* background-color: #FFDCA1; */
   background: linear-gradient(120deg, #ffd4a1 30%, #ffdca1 30%, #ffdca1 60%, #ffe4a1 60%);
   width: 100%;
   height: 100%;
@@ -41,9 +40,17 @@
   margin-top: 20px;
 }
 
+#orange-section {
+  position: relative;
+  top: 400px;
+  background-color: #F09B41;
+  width: 100%;
+  height: 120px;
+  z-index: -10;
+}
+
 .button {
   display:flex;
-  zoom: 1;
   border: 1px solid #d4d4d4;
   padding: 0px 25.6px;
   font-size: 14px;
@@ -66,9 +73,12 @@ input.button, button.button {
   font-size: 18px;
 }
 
+
+
+
 .button-highlight {
-  background-color: #F09B41;
-  border-color: #F09B41;
+  background-color: #f18d05;
+  border-color: #bf7004;
   color: white;
   display: flex;
   align-items: center;
