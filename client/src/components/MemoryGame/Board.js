@@ -66,12 +66,14 @@ function BoardForm() {
     }
   }, [choiceOne, choiceTwo])
   console.log(cards)
+  
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)
     setTurns((prevTurn) => prevTurn + 1)
     setDisabled(false)
   }
+
   useEffect(() => {
     shuffleCards()
   }, [])
