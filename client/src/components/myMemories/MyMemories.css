@@ -1,9 +1,10 @@
 #memory-component {
-    background-image: url('../../assets/images/cloud.jpg');
+    /* background-image: url('../../assets/images/cloud.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #66D0FF;
-    height: 100vh;
+    background-size: cover; */
+    background-color: #bdcdd4;
+    height: 100%;
+    padding-bottom: 50px;
 }
 
 #coming-soon {
@@ -21,19 +22,26 @@
     justify-content: space-around;
     align-items: center;
 }
+
 .memory-div {
     margin-top:70px;
-    width:350px;
+    width:80vw;
     height:160px;
     background:#ECEFF1;
-    box-shadow: 10px 10px rgba(0,0,0,0.2);
-    border-radius:100px;
+    box-shadow: 5px 5px rgba(0,0,0,0.2);
     margin: 50px auto auto;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
-
 .memory-title {
-    color:Orange;
+    color:#F09B41;
+    text-align: center;
+    border-bottom: 2px solid #bdcdd4;
+}
+
+.memory-item {
+    margin: 20px;
+    text-align: center;
+    color: #919191
 }

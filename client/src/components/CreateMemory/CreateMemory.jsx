@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// const CreateMemo
+import Navbar from '../Navbar/Navbar'
 import './CreateMemory.css'
 import { useMutation } from '@apollo/client';
 import { ADD_MEMORY } from '../../utils/mutation';
@@ -32,6 +32,7 @@ const CreateMemory = (props) => {
 
   return (
     <>
+    <Navbar></Navbar>
       <div>
         <div id='memory-form-container'>
           <form id='memory-form' onSubmit={handleFormSubmit}>

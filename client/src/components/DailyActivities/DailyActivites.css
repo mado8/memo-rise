@@ -132,6 +132,11 @@
     margin-top: 50px;
 }
 
+#input-answer-err {
+    text-align: center;
+    color: rgb(196, 0, 0);
+}
+
 @media screen and (max-width: 720px) {
     .subbutton, 
     .question p ,

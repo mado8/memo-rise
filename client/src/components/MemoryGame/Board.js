@@ -1,5 +1,6 @@
 import './Board.css'
 import React, { useEffect, useState } from 'react'
+import Navbar from '../Navbar/Navbar'
 import SingleCard from './SingleCard'
 import {
   faBrain,
@@ -65,17 +66,21 @@ function BoardForm() {
     }
   }, [choiceOne, choiceTwo])
   console.log(cards)
+  
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)
     setTurns((prevTurn) => prevTurn + 1)
     setDisabled(false)
   }
+
   useEffect(() => {
     shuffleCards()
   }, [])
 
   return (
+    <>
+    <Navbar></Navbar>
     <div id='memory-game'>
       <h1>Memory Game</h1>
       <p>Turns: {turns} </p>
@@ -96,6 +101,7 @@ function BoardForm() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
