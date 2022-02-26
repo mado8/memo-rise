@@ -1,5 +1,6 @@
 import './Board.css'
 import React, { useEffect, useState } from 'react'
+import Navbar from '../Navbar/Navbar'
 import SingleCard from './SingleCard'
 import {
   faBrain,
@@ -76,6 +77,8 @@ function BoardForm() {
   }, [])
 
   return (
+    <>
+    <Navbar></Navbar>
     <div id='memory-game'>
       <h1>Memory Game</h1>
       <p>Turns: {turns} </p>
@@ -96,6 +99,7 @@ function BoardForm() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

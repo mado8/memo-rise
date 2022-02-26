@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Navbar from '../Navbar/Navbar';
 import './Article.css'
 
 const ArticlesPage = () => {
@@ -63,10 +64,13 @@ const ArticlesPage = () => {
   }, [])
 
   return (
+    <>
+    <Navbar></Navbar>
     <div id="card-section">
       {memoryArticles}
         {articles}
     </div>
+    </>
   )
 }
 

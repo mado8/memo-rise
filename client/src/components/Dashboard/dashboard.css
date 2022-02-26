@@ -1,11 +1,28 @@
-#dasboard-form-container {
+#dashboard-form-container {
   background: linear-gradient(120deg, #ffd4a1 30%, #ffdca1 30%, #ffdca1 60%, #ffe4a1 60%);
   width: 100%;
-  height: 100%;
+  height: 120vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+#nav-div {
+  text-align: center;
+}
+
+#nav-div a {
+  color: #F09B41;
+  /* background-color: #fff; */
+  border: 2px #F09B41 solid;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+#dashboard-icon {
+  size: 10px;
 }
 
 #page-container {
@@ -83,6 +100,9 @@ input.button, button.button {
 }
 
 @media screen and (max-width: 560px) {
+  #dashboard-form-container {
+    height: 100vh;
+  }
   .button-circle {
     width: 30vw;
     height: 30vw;
