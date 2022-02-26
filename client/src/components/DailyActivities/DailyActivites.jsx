@@ -11,10 +11,11 @@ import GetMemory from '../GetMemory'
 const DailyActivites = () => {
   const { data: user } = useQuery(GET_ME)
   const userData = user?.user || {}
-  const memoryIdArr = userData?.memories
-  const [start, setStart] = useState('pending')
-  const [questions, setQuestions] = useState([])
-  const [increment, setIncrement] = useState(0)
+  const memoryIdArr = userData?.memories;
+  const [start, setStart] = useState('pending');
+  const [questions, setQuestions] = useState([]);
+  const [increment, setIncrement] = useState(0);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (memoryIdArr !== undefined) {
@@ -39,8 +40,15 @@ const DailyActivites = () => {
     event.preventDefault()
 
     console.log('------------questions and answer ----------')
-    console.log(questionInput)
+    console.log(questionInput === "")
     console.log(answerInput)
+
+    if(answerInput === "" || questionInput === "") {
+      setError(true)
+      console.log(error)
+    }
+
+    console.log(error)
 
     const memoryQuestion = { question: questionInput, answer: answerInput }
     console.log(memoryIdArr[increment]._id)
@@ -57,8 +65,17 @@ const DailyActivites = () => {
         handleStart('finished')
       }
     } catch (err) {
-      alert('catch')
       console.log(err)
+    }
+  }
+
+  const handleError = () => {
+    if(error === false) {
+      return
+    } else {
+      return (
+        <p id="input-answer-err">Please input an answer.</p>
+      )
     }
   }
 
@@ -126,6 +143,9 @@ const DailyActivites = () => {
           </div>
           <div className='question' value={questions[increment]}>
             {questions[increment]}
+          </div>
+          <div>
+            {handleError()}
           </div>
           <div className='answerbox'>
             <input
