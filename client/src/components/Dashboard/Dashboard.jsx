@@ -12,7 +12,7 @@ import {
     faCodeBranch,
     faBook,
 } from '@fortawesome/free-solid-svg-icons'
-import './Dashboard.css'
+import './dashboard.css'
 
 function DashboardComponent() {
     const [pageChange, setPageChange] = useState('dashboard')
