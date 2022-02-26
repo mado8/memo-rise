@@ -32,9 +32,9 @@ const useMemory = ({ _id, handlePage }) => {
     <div className="memory-div">
       <h3 className="memory-title"> My Memory</h3>
       <p className="memory-item">{memoryTitle}</p>
-      <h3> Description </h3>
+      {/* <h3> Description </h3> */}
       <p className="memory-item"> {memoryDesc}</p>
-      <a id="questions-button" questionsID={1} onClick={()=> handlePage('questions')}>See questions!</a>
+      {/* <a id="questions-button" questionsID={1} onClick={()=> handlePage('questions')}>See questions!</a> */}
     </div>
   )
 }
