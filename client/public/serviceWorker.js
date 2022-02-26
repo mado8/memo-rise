@@ -21,7 +21,7 @@ self.addEventListener('fetch', function (event) {/* eslint-disable-line no-restr
             if (response) {
                 return response;
             }
-            return fetch(event.request);
+            return fetch(event.request)
         })
     );
 });

@@ -6,6 +6,13 @@
     height: 100vh;
 }
 
+#coming-soon {
+    text-align: center;
+    background-color: #66D0FF;
+    color: white;
+    font-size: 3em;
+    padding: 50vh
+}
 
 .memory-container {
     width: 100vw;

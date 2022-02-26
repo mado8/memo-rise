@@ -84,15 +84,16 @@ function DashboardComponent() {
             )
         }
     }
+  
 
-    return (
-        <>
-            <>
-                <Navbar></Navbar>
-                {conditionallyRendering()}
-            </>
-        </>
-    )
+  return (
+    <>
+      <>
+        <Navbar></Navbar>
+        {conditionallyRendering()}
+      </>
+    </>
+  )
 }
 
 export default DashboardComponent

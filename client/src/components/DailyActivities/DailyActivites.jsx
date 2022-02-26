@@ -47,7 +47,7 @@ const DailyActivites = () => {
 
     try {
       console.log('inside try')
-      // await addQuestion({ variables: {questionData: memoryQuestion, memoryID: memoryIdArr[increment]._id} });
+      await addQuestion({ variables: {questionData: memoryQuestion, memoryID: memoryIdArr[increment]._id} });
 
       setQuestionInput('')
       setAnswerInput('')

@@ -1,0 +1,101 @@
+#card-section {
+    background-color: rgb(200, 221, 199);
+    padding-left: 10vw;
+    padding-right: 10vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#card-div {
+    text-align: center;
+    width: 30vw;
+    height: 40vw;
+    padding: 5%;
+    background-color: #fff;
+    /* border: #cecece 2px solid; */
+    /* box-shadow: 8px rgb(169, 190, 168); */
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 20px;
+    margin: 10px;
+}
+
+#card-div h4 {
+    font-size: 1.2em;
+}
+
+#card-div img {
+  height: 20vw;
+  max-width: 100%;
+  border-radius: 20px;
+  vertical-align: middle;
+}
+
+#card-div a {
+    text-decoration: none;
+    color: #8d5303
+}
+
+@media screen and (max-width: 1135px) {
+    #card-div {
+        height: 45vw;
+    }
+}
+
+@media screen and (max-width: 875px) {
+    #card-div {
+        width: 40vw;
+        height: 60vw;
+    }
+}
+
+@media screen and (max-width: 675px) {
+
+    #card-div img {
+        height: 40vw;
+    }
+
+    #card-section {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    #card-div {
+        width: 60vw;
+        height: 90vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    #card-div img {
+        height: 50vw;
+    }
+
+    #card-section {
+        padding-left: 0vw;
+        padding-right: 0vw;
+    }
+
+    #card-div {
+        width: 100vw;
+        height: 100vw;
+    }
+}
+
+@media screen and (max-width: 430px) {
+
+    #card-div img {
+        height: 50vw;
+    }
+
+    #card-section {
+        padding-left: 0vw;
+        padding-right: 0vw;
+    }
+
+    #card-div {
+        width: 100vw;
+        height: 165vw;
+    }
+}

@@ -1,28 +1,28 @@
-// import React from 'react'
-// import { useMutation, useQuery } from '@apollo/client'
-// import { ADD_QUESTION } from '../utils/mutation'
+import React from 'react'
+import { useMutation, useQuery } from '@apollo/client'
+import { GET_QUESTION } from '../utils/querie'
 
 
-// const AddQuestionButton = ({ _id }) => {
-//   console.log(_id)
-//   const [addQuestion] = useMutation(ADD_QUESTION)
+const AddQuestionButton = ({ _id }) => {
+  console.log(_id)
+  const { data: question } = useQuery(GET_ME);
+  const userData = question?.question || {};
+  let arr = [];
+
   
-//   const HandleAddQuestion = () =>{
-//     // const { data: question } = useMutation(ADD_QUESTION, {
-//     //   variables: { _id },
-//     // })
-//     try{
-//       const { data } = await addQuestion({variables: {questionData: }});
-//     }catch(err){
-//       console.log(err)
-//     }
+  const HandleAddQuestion = () =>{
+    try{
+    //   const { data } = await addQuestion({variables: {questionData: }});
+    }catch(err){
+      console.log(err)
+    }
 
-//   }
+  }
 
-//   return (
+  return (
 
-//   <button onClick={HandleAddQuestion}>Add Question</button>
-//   )
-// }
+  <button onClick={HandleAddQuestion}>Add Question</button>
+  )
+}
 
-// export default AddQuestionButton
+export default AddQuestionButton

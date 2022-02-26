@@ -1,18 +1,22 @@
-
-import './Board.css';
-import React, { useEffect, useState } from 'react';
-
-import SingleCard from './SingleCard';
+import './Board.css'
+import React, { useEffect, useState } from 'react'
+import SingleCard from './SingleCard'
+import {
+  faBrain,
+  faCrown,
+  faBook,
+  faBomb,
+  faCakeCandles,
+  faCat,
+} from '@fortawesome/free-solid-svg-icons'
 
 const cardImages = [
-
-  { "src": "/img/helmet-1.png", match: false },
-  { "src": "/img/ring-1.png" ,  match: false},
-  { "src": "/img/potion-1.png",  match: false },
-  { "src": "/img/scroll-1.png",  match: false },
-  { "src": "/img/shield-1.png",  match: false },
-  { "src": "/img/sword-1.png",  match: false }
-
+  { icon: faBrain, match: false },
+  { icon: faCrown, match: false },
+  { icon: faBook, match: false },
+  { icon: faBomb, match: false },
+  { icon: faCakeCandles, match: false },
+  { icon: faCat, match: false },
 ]
 
 function BoardForm() {
@@ -20,7 +24,7 @@ function BoardForm() {
   const [turns, setTurns] = useState(0)
   const [choiceOne, setChoiceOne] = useState(null)
   const [choiceTwo, setChoiceTwo] = useState(false)
-  const [disabled, setDisabled] =useState(null)
+  const [disabled, setDisabled] = useState(null)
   // shuffle cards
   const shuffleCards = () => {
     const shuffleCards = [...cardImages, ...cardImages]
@@ -32,68 +36,67 @@ function BoardForm() {
     setTurns(0)
   }
   // console.log(cards, turns)
-// handle choice
+  // handle choice
   const handleChoice = (card) => {
     console.log(card)
-    choiceOne? setChoiceTwo(card) : setChoiceOne(card)
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
   // compare 2 selected cards
   useEffect(() => {
-  
     if (choiceOne && choiceTwo) {
       setDisabled(true)
-      if (choiceOne.src === choiceTwo.src) {
+      if (choiceOne.icon === choiceTwo.icon) {
         // console.log("matched Cards!!")
         // resetTurn()
-        setCards(prevCards => {
-          return prevCards.map(card => {
-            if (card.src === choiceOne.src) {
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.icon === choiceOne.icon) {
               return { ...card, match: true }
-            }
-            else {
-              return card;
+            } else {
+              return card
             }
           })
         })
         resetTurn()
-      }else {
-        console.log("those paths dont match")
-       setTimeout(() => resetTurn(), 1000)
+      } else {
+        console.log('those paths dont match')
+        setTimeout(() => resetTurn(), 1000)
       }
     }
-
   }, [choiceOne, choiceTwo])
-console.log(cards)
+  console.log(cards)
   const resetTurn = () => {
     setChoiceOne(null)
     setChoiceTwo(null)
-    setTurns(prevTurn => prevTurn + 1)
+    setTurns((prevTurn) => prevTurn + 1)
     setDisabled(false)
   }
-  useEffect(() => { 
+  useEffect(() => {
     shuffleCards()
-  },[])
-  
-  return (
-    <div className="App">
-      <h1>Memory Game</h1>
-      <button onClick={shuffleCards}>New Game</button>
+  }, [])
 
-      <div className='card-grid'>
-        {cards.map(card => (
-          <SingleCard
-            key=
-            {card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === choiceOne || card === choiceTwo || card.match}
-            disabled={disabled}
-          />
-        ))}
-      </div>
+  return (
+    <div id='memory-game'>
+      <h1>Memory Game</h1>
       <p>Turns: {turns} </p>
+      <button id='new-game' onClick={shuffleCards}>
+        New Game
+      </button>
+      <div id="cards-section">
+        <div className='card-grid'>
+          {cards.map((card) => (
+            <SingleCard
+              key={card.id}
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === choiceOne || card === choiceTwo || card.match}
+              disabled={disabled}
+            />
+          ))}
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default BoardForm;
+export default BoardForm
